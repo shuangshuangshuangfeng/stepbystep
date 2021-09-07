@@ -2,9 +2,9 @@
 
 ## 一、 Java基础
 
-[1. Java代码块](/基础/Java代码块.md)
+[1. Java代码块](/Java/基础/Java代码块.md)
 
-[2. Java线程池](/基础/Java线程池.md)
+[2. Java线程池](基础/Java线程池.md)
 
 
 
