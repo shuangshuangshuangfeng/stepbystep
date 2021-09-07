@@ -1,23 +1,19 @@
 # strepbystep
-1. Java
+[1. Java](/Java/README.md)
 
 
 
-
-
-2. Linux C 系统编程
-
-
-
-3. MySQL
+[2. Linux C 系统编程](/LinuxC/README.md)
 
 
 
-4. Spring
+[3. MySQL](/MySQL/README.md)
 
 
 
-5. LeetCode
+[4. LeetCode](/leetCode/README.md)
 
 
+
+每一步都要有痕迹...
 
