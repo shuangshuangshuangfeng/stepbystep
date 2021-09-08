@@ -2,7 +2,7 @@
 
 
 
-[1. 标准IO](/LinuxC/1 - 标准IO.md)
+[1. 标准IO](/LinuxC/1_标准IO.md)
 
 [2. 系统调用IO](/LinuxC/2 - 系统调用IO.md)
 
