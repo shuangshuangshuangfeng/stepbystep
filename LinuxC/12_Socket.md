@@ -8,47 +8,17 @@ TCP报文如下，有32位的确认序号、32位序列号，确认位ACK、请�
 
 
 
-客户端 |                SYN = 1, seq = random() 【10000】    ->       |           服务端            
-
-            |       ---------------------------------------------------       |  
-
-            |                   <-   SYN=1， seq = random() 【20000】    |                          
-
-     |                          ACK=1, ack = 10001                              |
-
-    |       ----------------------------------------------------       |
-
-    |                    ACK=1, ack = 20001       ->                          |
-
-    |                                                                                          |
-
-  
-
 ![](https://tcs.teambition.net/storage/31286920e0723559c7252182ef6096579716?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg2OTIwZTA3MjM1NTljNzI1MjE4MmVmNjA5NjU3OTcxNiJ9.BgNJFwoEkqptvpD_q4tFiH0jz183XQwB_2vAu4YQWMs&download=image.png "")
 
-![](https://tcs.teambition.net/storage/3128692668e8c1c8158286c9ca1b115a2cf9?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg2OTI2NjhlOGMxYzgxNTgyODZjOWNhMWIxMTVhMmNmOSJ9.R9uXKhWIjsN-YFZWbSKyM34AKDMvbBOssY--_7QMs7o&download=image.png "")
+
 
 ## 2. TCP 四次挥手
 
+![](https://tcs.teambition.net/storage/3128692668e8c1c8158286c9ca1b115a2cf9?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg2OTI2NjhlOGMxYzgxNTgyODZjOWNhMWIxMTVhMmNmOSJ9.R9uXKhWIjsN-YFZWbSKyM34AKDMvbBOssY--_7QMs7o&download=image.png "")
 
 
-客户端         |                FIN = 1, seq = 【12923】    ->                       |           服务端                  
 
-                    |       ---------------------------------------------------       |  
-
-                    |                   <-   ACK=1， ack = 12924                           |              **Close-Wait 状态 **  
-
-             |        -----------------------------------------------------   |         --------------------
-
-             |                 <-     FIN=1, seq = 132434                             |
-
----------       |       ----------------------------------------------------       |
-
-**Time-Wait**    |                    ACK=1, ack = 132435     ->                          |
-
-             |        ------------------------------------------------ --        |
-
-
+## 
 
 
 
@@ -66,21 +36,19 @@ intel用的小端序x86、x64的都是小端序，学习一下调试器使用
 
 典型的有两种存储方式：大端存储、小端存储，
 
-大端： 低地址处放高字节
+> 大端： 低地址处放高字节
 
-小端： 低地址处放低字节 （**正常逻辑**）
+> 小端： 低地址处放低字节 （**正常逻辑**）
 
 大小端和发送有什么样的区别吗？？？**不管是文件传输还是IO的时候，永远都是低地址处的数据先出去，高地址处的数据后出去。**
 
 我们不再纠结大端存储和小端存储，我们只区分主机字节序和网络字节序
 
-    - 主机字节序： host
+- 主机字节序： host
 
-    - 网络字节序：network
+- 网络字节序：network
 
-    - _ to _ _: htons(host to network short) ,  htonl(host to network long)
-
-
+`- _ to _ _: htons(host to network short) ,  htonl(host to network long)`
 
 ### 2. 对齐问题， 解决办法是不对齐
 
@@ -94,7 +62,7 @@ struct{
 
 结构体中有如上的类型，在学到C语言的时候，老师可能讲的是这个结构体的字节数是所有成员字节数的相加之和，**而实际上把这个字节在任何的编译器上编译的 话，基本上不会看到它占九个字节的时候，为什么呢？？？因为编译器把结构体给对齐了，对齐的 是加速节省当前的取指周期，凡是参与网络通信的结构体，我们一定要禁止对齐，所以结构体在定义的时候一定要指定禁止编译器编译。**
 
-三十二位的环境上，是四个字节一对齐。
+<font color='red'>三十二位的环境上，是四个字节一对齐。</font>
 
 硬件存储的原理：硬件存储的时候会分自存储、双自存储、半自存储等等，基本上是往自存储上靠拢，对于对齐这块，如果不从底层存储的角度来解释的话， 从应用层的角度来解释的话，**编译器在进行对齐的时候，可以理解为一个公式：如果当前起始地址号能够整除这个成员的sizeof的话，就把它放在这，**
 
@@ -102,37 +70,29 @@ struct{
 
 
 
-
-
 ### 3. 类型长度的问题
 
-int 
+`int `
 
-char 
-
-解决办法： int32_t, uint32_t, int64_t, int8_t 
+解决办法：` int32_t`, `uint32_t`, `int64_t, int8_t `
 
 
 
 ## 1.2 socket是什么？？
 
-socket是一个中间层，它抽象出来了一个文件描述符，给你一个文件描述符，就可以完成套接字的传输问题，**它连接了底层实现协议与上层实现方式**
+`socket`是一个中间层，它抽象出来了一个文件描述符，给你一个文件描述符，就可以完成套接字的传输问题，**它连接了底层实现协议与上层实现方式**
 
 
 
 ![](https://tcs.teambition.net/storage/312844d09ecd68b8cd69d18e15744808565a?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg0NGQwOWVjZDY4YjhjZDY5ZDE4ZTE1NzQ0ODA4NTY1YSJ9.-0k29yAqpvNjmE96-CSxK96aABR8RMHAg-aVjmg09S0&download=image.png "")
 
-- domain 协议族
+- `domain` 协议族
 
-- type 类型
+- `type `类型
 
-- protocol 协议
+- `protocol` 协议
 
-使用某种协议族(domain)中的某个协议（protocol）完成某种类型（type）的传输。
-
-
-
-
+使用某种协议族(`domain`)中的某个协议（`protocol`）完成某种类型（`type`）的传输。
 
 
 
@@ -146,41 +106,41 @@ socket是一个中间层，它抽象出来了一个文件描述符，给你一�
 
 报式套接字用到的函数：
 
-- socket()
+- `socket()`
 
-- bind()
+- `bind()`
 
-- sendto()
+- `sendto()`
 
-- rcvfrom()
+- `rcvfrom()`
 
-- setsockopt()  这只socket的一些参数   ` man 7 socket`可以看到socket层面的不同的设置属性
+- `setsockopt()`  这只`socket`的一些参数   ` man 7 socket`可以看到socket层面的不同的设置属性
 
-- getsockopt()
+- `getsockopt()`
 
 
 
 点式IP与大整数之间的转换的函数：
 
-- inet_pton()  
+- `inet_pton()  `
 
-- inet_ntop()
+- `inet_ntop()`
 
 ### 基础版
 
-被动端：（先运行）
+**被动端：（先运行）**
 
-- 取得socket
+- 取得`socket`
 
-- 给socket取得地址
+- 给`socket`取得地址
 
 - 收/发消息
 
-- 关闭socket
+- 关闭`socket`
 
 
 
-主动端：
+**主动端：**
 
 - 取得socket
 
@@ -190,11 +150,13 @@ socket是一个中间层，它抽象出来了一个文件描述符，给你一�
 
 - 关闭socket
 
+![image-20210908163241456](12_Socket.assets/image-20210908163241456.png)
+
 
 
 **为什么主动端能省略和本机约定地址的步骤呢？？？**
 
-因为不跟本机约定的话，当前socket建立成功，会给分配一个没人用的随机端口，当进程结束前这个端口都留给这个进程使用，不会给他人使用。，而被动端要约定端口，在端口接收数据，所以不能省略。
+因为**不跟本机约定的话，当前socket建立成功，会给分配一个没人用的随机端口，当进程结束前这个端口都留给这个进程使用，不会给他人使用, 而被动端要约定端口，在端口接收数据，所以不能省略。**
 
 
 
@@ -202,13 +164,13 @@ socket是一个中间层，它抽象出来了一个文件描述符，给你一�
 
 ![](https://tcs.teambition.net/storage/3128c5940484c334e9da959cbd95cadcb40a?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjhjNTk0MDQ4NGMzMzRlOWRhOTU5Y2JkOTVjYWRjYjQwYSJ9.wuC6BlwoZHZRsvHpimrSh_MC3icCexX2qQ8hryuU4m8&download=image.png "")
 
-**不同协议族对于通信地址的约定实际上是不一致的**，所以压根都没有struct sockaddr 这个类型。具体内容取决于协议族中如何实现的。
+**不同协议族对于通信地址的约定实际上是不一致的**，所以压根都没有`struct sockaddr `这个类型。具体内容取决于协议族中如何实现的。
 
-所以，不同的协议族，可以查看不同的man手册：
+所以，不同的协议族，可以查看不同的`man`手册：
 
-- AF_INET  : man 7 ip
+- `AF_INET  : man 7 ip`
 
-- AF_INET6 : man 7 ipv6 
+- `AF_INET6 : man 7 ipv6 `
 
 - .....
 
@@ -321,7 +283,8 @@ int main(int argc, char *argv[])
                 perror("socket");
                 exit(1);
         }
-        // bind() // 随机分配
+        // bind()
+ // 随机分配
 
         strcpy(sdbuf.name, "Alan");
         sdbuf.math = htonl(rand()%100);
@@ -354,9 +317,11 @@ int main(int argc, char *argv[])
 
 多点通讯涵盖两种：
 
-- 广播： 分为全网广播和子网广播
+- 广播： 用于一个主机对**整个局域网**上所有主机上的数据通信，广播地址`255.255.255.255`
+- 多播/组播： 对一组**特定的主机**进行通信，而不是整个局域网上的所有主机
+- 单播：**两台主机**之间的端对端通信
 
-- 多播/**组播**
+
 
 
 

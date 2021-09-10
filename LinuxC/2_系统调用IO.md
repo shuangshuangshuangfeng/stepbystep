@@ -2,13 +2,13 @@
 
 ## 02 系统调用IO介绍
 
-I/O：input & output， 是一切实现的基础，主要分为
+`I/O`：`input & output`， 是一切实现的基础，主要分为
 
-- stdio 标准IO （所有的标准都是为了和稀泥整合不同）
+- `stdio` 标准IO （所有的标准都是为了和稀泥整合不同）
 
-- sysio 系统调用IO
+- `sysio` 系统调用IO
 
-**注意**：系统调用IO又称为文件IO， 文件描述符（fd, File discriptor 文件描述符）是文件IO中贯穿始终的类型。
+**注意**：系统调用IO又称为文件IO， 文件描述符（`fd`, `File discriptor` 文件描述符）是文件IO中贯穿始终的类型。
 
 
 
@@ -30,9 +30,9 @@ I/O：input & output， 是一切实现的基础，主要分为
 
 - 同步：`sync`, `fsync`, `fdatasync`
 
-- fcntl 管家级函数
+- `fcntl `管家级函数
 
-- ioctl 管家级函数
+- `ioctl` 管家级函数
 
 - 虚目录 `/dev/fd/`
 
@@ -46,17 +46,17 @@ I/O：input & output， 是一切实现的基础，主要分为
 
 ## 文件描述符
 
-在标准IO当中，有一个类型贯穿始终，是`FILE`，它其实是一个结构体（我们叫他FILE结构体），我们知道，它里面一定有一个文件位指针`position`。
+在标准IO当中，有一个类型贯穿始终，是`FILE`，它其实是一个结构体（我们叫他`FILE`结构体），我们知道，它里面一定有一个文件位指针`position`。
 
-在系统调用IO中，一个文件的唯一标识，叫做inode， 每个文件有一个唯一的inode号。当我们打开一个文件的时候，它会产生一个结构体，这个结构体存的是这个文件的几乎所有属性信息，也就是我们当前要用的所有信息。当我们拿着一个指向这个结构体的指针的时候，就相当于拿着一个类似于指向FILE结构体的指针，但是系统并没有给这样做，而是将数据结构隐藏，不让用户知道定义的结构体的类型是什么。
+在系统调用IO中，一个文件的唯一标识，叫做`inode`， 每个文件有一个唯一的`inode`号。当我们打开一个文件的时候，它会产生一个结构体，这个结构体存的是这个文件的几乎所有属性信息，也就是我们当前要用的所有信息。当我们拿着一个指向这个结构体的指针的时候，就相当于拿着一个类似于指向FILE结构体的指针，但是系统并没有给这样做，而是将数据结构隐藏，不让用户知道定义的结构体的类型是什么。
 
 于是定义了一个数组，这个数组中存的是指向结构体的指针，然后交给用户的是当前指向数组指针的下表`index`，也就是一个整型数。
 
-**注意**：当用户想访问一个文件，FILE结构体中一定会有一个整型的文件描述符，然后用户拿着这个整型数过来，可以找到指向结构体的指针，然后根据指向结构体的指针找到结构体，然后根据结构体中的position访问文件内容。
+**注意**：当用户想访问一个文件，FILE结构体中一定会有一个整型的文件描述符，然后用户拿着这个整型数过来，可以找到指向结构体的指针，然后根据指向结构体的指针找到结构体，然后根据结构体中的`position`访问文件内容。
 
 
 
-### fopen和fclose时做了什么操作？？
+### `fopen`和`fclose`时做了什么操作？？
 
 当调用标准IO`fopen`函数的时候，会产生一个FILE类型结构体，然后系统调用IO调用`open`函数创建一个指向文件的结构体，将这个结构体的指针放在数组中，然后将数组下标给FILE结构体。
 
@@ -66,7 +66,7 @@ I/O：input & output， 是一切实现的基础，主要分为
 
 ### 存放结构体指针的数组多大？？
 
-上一章中，写过一个小例子，用来测试一个文件中最多可以打开的文件流的数量。当时测出的是1024（1021+3）个。
+上一章中，写过一个小例子，用来测试一个文件中最多可以打开的文件流的数量。当时测出的是`1024（1021+3）`个。
 
 **注意**：如果通过`ulimit -n`命令来更改文件中能打开的文件的个数的话，其实就是在更改这个数组的大小。**默认情况下** **数组中的下表0,1,2关联的是stdin, stdout, stderr三个设备** 。实际上是可以改的，因为看**0,1,2是从父亲进程那里继承过来的** ，如果他的父亲没有0,1,2，或者说父亲在创建当前进程之前把0，1，2关掉了或者重定向了，当前进程的0，1，2关联的也不会是标准设备。
 
@@ -74,7 +74,7 @@ I/O：input & output， 是一切实现的基础，主要分为
 
 当一个文件在一个进程中被打开多次的时候，每次打开都会产生一个指向文件的结构体，如果按照一定的协议，可以对一个文件进行协同操作。
 
-当数组中是可以多个下表关联同一个指向文件的结构体的，当其中一个指针调用`close`的时候，是不会free这个结构体的，所以这个指向文件的结构体中一定会有一个计数器，用来表示当前结构体被几个指针引用着。当这个计数器减为0的时候，这个结构体才会被free掉。
+当数组中是可以多个下表关联同一个指向文件的结构体的，当其中一个指针调用`close`的时候，是不会`free`这个结构体的，所以这个指向文件的结构体中一定会有一个计数器，用来表示当前结构体被几个指针引用着。当这个计数器减为0的时候，这个结构体才会被free掉。
 
 
 
@@ -82,7 +82,7 @@ I/O：input & output， 是一切实现的基础，主要分为
 
 ## 文件IO操作相关函数
 
-### open() 函数
+### `open() `函数
 
 若获得一些文件描述符的话，先执行`open`
 
@@ -98,33 +98,33 @@ I/O：input & output， 是一切实现的基础，主要分为
 
 后面讲时间专题的时候，会讲到三个时间：
 
-- ATIME， 最后读的时间
+- `ATIME`， 最后读的时间
 
-- MTIME， 最后写的时间
+- `MTIME`， 最后写的时间
 
-- CTIME ,   最后亚数据修改的时间
-
-
-
-### **使用**`**fopen**`**函数的时候，有几种权限， 放到系统调用IO中权限应该怎么写？？？**：
-
-- `r `: O_RDONLY， 要求文件存在
-
-- `r+`：O_RDWR， 首先是读写，但是要求文件存在
-
-- `w`：O_WRONLY(只写) | O_CREATE(文件不存在的话要创建) | O_TRUNK（文件存在的话要截断）
-
-- `w+`：O_RDWR（读写）| O_TRUNK（有则清空）| O_CREATE（无则创建）
+- `CTIME` ,   最后亚数据修改的时间
 
 
 
-在上一章中，使用fopen函数去创建文件的时候，是遵循一定的规则去创建文件权限的，在系统调用IO中创建文件，它的权限是？？
+### **使用**`fopen`**函数的时候，有几种权限， 放到系统调用IO中权限应该怎么写？？？**：
+
+- `r `: `O_RDONLY`， 要求文件存在
+
+- `r+`：`O_RDWR`， 首先是读写，但是要求文件存在
+
+- `w`：`O_WRONLY`(只写) |` O_CREATE`(文件不存在的话要创建) |` O_TRUNK`（文件存在的话要截断）
+
+- `w+`：`O_RDWR`（读写）| `O_TRUNK`（有则清空）| `O_CREATE`（无则创建）
+
+
+
+在上一章中，使用`fopen`函数去创建文件的时候，是遵循一定的规则去创建文件权限的，在系统调用IO中创建文件，它的权限是？？
 
 ![](https://tcs.teambition.net/storage/3124649d5e2f4740c678815f262e7c990671?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ2NDlkNWUyZjQ3NDBjNjc4ODE1ZjI2MmU3Yzk5MDY3MSJ9.PAqNYI20y4M_1xaj_YMiCWAxJpjuGV-nA3PjnSI6mxA&download=image.png "")
 
 如果`flag`当中有`CREATE`， 那么一定要用三参的形式，如果`flag`当中没有`CREATE`， 那么一定要有两参的形式。
 
-open的第三个参数是给的权限，当然不是你给多少就有多少，而是用你给的值按位与umask取反， 也就是`mode & ~umask`，和上一章的公式一样。(umask: 默认权限)
+open的第三个参数是给的权限，当然不是你给多少就有多少，而是用你给的值按位与`umask`取反， 也就是`mode & ~umask`，和上一章的公式一样。(`umask`: 默认权限)
 
 
 
@@ -132,21 +132,21 @@ open的第三个参数是给的权限，当然不是你给多少就有多少，�
 
 上面`man open`中，可以看到`open`函数有两种实现方式，一种有两个参数，一种有三个参数，有什么区别？？
 
-       如果函数名相同，函数的参数不相同的时候，这种现象叫做**重载**。但是C语言中没有重载，**因为重载是定参的** ，那么这是如何实现的？？**和**`**printf()**`**的实现相同，**`**printf**`**叫做变参函数，所以open是用变参来实现的** 。
+> 如果函数名相同，函数的参数不相同的时候，这种现象叫做**重载**。但是C语言中没有重载，因为重载是定参的 ，那么这是如何实现的？？**和**`printf()`**的实现相同，`printf`叫做变参函数，所以open是用变参来实现的** 。
 
-**注意**：gcc有一个选项叫`gcc -Wall` 是用来显示当前所有的警告，我们可以把`-Wall`加到makefile 文件中去，因为 gcc有本身它的提醒会比较圆滑，有时间它告诉你这是一个warning， 但是实际上已经是一个error了。所以一定要把程序调到没有警告为止，除非你可以解释这个警告。
+**注意**：`gcc`有一个选项叫`gcc -Wall` 是用来显示当前所有的警告，我们可以把`-Wall`加到`makefile` 文件中去，因为` gcc`有本身它的提醒会比较圆滑，有时间它告诉你这是一个`warning`， 但是实际上已经是一个`error`了。所以一定要把程序调到没有警告为止，除非你可以解释这个警告。
 
 
 
-### read() ， write() 和 lseek()函数
+### `read() `， `write() `和` lseek()`函数
 
 `man open` 的结果如下：
 
 ![](https://tcs.teambition.net/storage/3124a650884055d61256dcf7a84d27311022?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRhNjUwODg0MDU1ZDYxMjU2ZGNmN2E4NGQyNzMxMTAyMiJ9.gKpTJ1Oek9E4xyl_yxXeF9AFigiZ-zWywh_jCyYEvus&download=image.png "")
 
-**注意**：fd是一个文件描述符，根据一切皆文件的描述，这个文件描述符可以是指向文件的， 也可以是指向设备的。
+**注意**：`fd`是一个文件描述符，根据一切皆文件的描述，这个文件描述符可以是指向文件的， 也可以是指向设备的。
 
-buf是要读取的缓冲区
+`buf`是要读取的缓冲区
 
 
 
@@ -154,9 +154,9 @@ buf是要读取的缓冲区
 
 ![](https://tcs.teambition.net/storage/3124a7da2d93d5f51e41b34ee3958860767f?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRhN2RhMmQ5M2Q1ZjUxZTQxYjM0ZWUzOTU4ODYwNzY3ZiJ9.fY8ml1Tb2qEak_rin0fGQJcyX1tMWCkMjNIAD7iBAbI&download=image.png "")
 
-要注意这里的buf前的类型是const，说明这块内存的地址是不能修改的，而读的话是可以在任意地址读的。
+要注意这里的`buf`前的类型是`const`，说明这块内存的地址是不能修改的，而读的话是可以在任意地址读的。
 
-wirite的返回值：
+`wirite`的返回值：
 
 ![](https://tcs.teambition.net/storage/3124f844b0031d89445d2aed38e627a1516f?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRmODQ0YjAwMzFkODk0NDVkMmFlZDM4ZTYyN2ExNTE2ZiJ9.JxdJz9cb_iqBOreKAvtf46sOs0iRn0t1uz2QPPo3WSI&download=image.png "")
 
@@ -245,7 +245,8 @@ int main(int argc, char **argv)
 	        }
 			pos += ret;
 			len -n ret;
-		}	   
+		}	
+   
 	}
 
 
