@@ -1,6 +1,6 @@
 # Linux系统编程目录
 
-
+[0. C和指针](/LinuxC/0_C和指针.md)
 
 [1. 标准IO](/LinuxC/1_标准IO.md)
 
@@ -25,4 +25,10 @@
 [11. 进程间通信](/LinuxC/11_进程间通信.md)
 
 [12. Socket](/LinuxC/12_Socket.md)
+
+[13. 多播组播t](/LinuxC/多播组播.md)
+
+
+
+
 

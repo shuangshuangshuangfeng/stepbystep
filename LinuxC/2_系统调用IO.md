@@ -168,13 +168,13 @@ open的第三个参数是给的权限，当然不是你给多少就有多少，�
 
 ![](https://tcs.teambition.net/storage/31245a140f9621133e98808f520d2c246db7?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ1YTE0MGY5NjIxMTMzZTk4ODA4ZjUyMGQyYzI0NmRiNyJ9.E7FtGGG0mEwSPjLXnRzKoSNdq6n8p8PmVLX2hx6NqX4&download=image.png "")
 
-可以发现，和stdio中的`fseek`函数是类似的。实际上，`fseek`是通过调用`lseek`实现的。
+可以发现，和`stdio`中的`fseek`函数是类似的。实际上，`fseek`是通过调用`lseek`实现的。
 
-- fd 文件描述符
+- `fd `文件描述符
 
-- offset 偏移量
+- `offset` 偏移量
 
-- whence 相对偏移位置，（ 标红的）
+- `whence `相对偏移位置，（ 标红的）
 
 
 
@@ -293,7 +293,7 @@ int main(int argc, char **argv)
 
 ### 为什么标准IO和系统调用IO不能混用呢？？
 
-比如FILE类型中有一个position， 然后文件描述符的结构体中也有一个position， 那么这两个是一样的吗？？答案是**往往一定不一样** 。
+比如FILE类型中有一个`position`， 然后文件描述符的结构体中也有一个`position`， 那么这两个是一样的吗？？答案是**往往一定不一样** 。
 
 因为标准IO有缓冲机制。
 
@@ -303,7 +303,7 @@ fputc(fp);  -> position++  // 所以FILE中的positon是向后移动的
 fputc(fp);  -> position++
 ```
 
-这里可以看到FILE类型中的`position`是进行了一个+2的操作，那么文件描述符指向的结构体中的`position`是否也`+2`？？实际上不是的，**因为当**`**fputc()**`**的时候，实际上并没有写入到磁盘上，而是写到了缓冲区当中** **，所以文件描述符指向的结构体中的**`**position**`**并没有**`**+2**`**，只有当各种刷新的时候，文件描述符指向的结构体中的**`**position**`**才会**`**+2 **`。
+这里可以看到FILE类型中的`position`是进行了一个+2的操作，那么文件描述符指向的结构体中的`position`是否也`+2`？？实际上不是的，**因为当**`fputc()`的时候，实际上并没有写入到磁盘上，而是写到了缓冲区当中 **，所以文件描述符指向的结构体中的**`position`并没有**`+2`**，只有当各种刷新的时候，文件描述符指向的结构体中的**`position`**才会+2 。
 
 
 
@@ -347,17 +347,17 @@ int main()
 
 ## IO效率问题
 
-**一个课下习题**：自己写的mycopy修改BUFSIZE的大小，从128B 二倍增长（按理说性能是一直增的，但是增到一个拐点性能肯定会下降），增长到16M， 复制的文件大约3G-5G大小之间。然后出一个表，当BUFSIZE=128时，real time , sys time , user time的时间， 然后注意性能的最高拐点出现在BUFSIZE多大的时候，以及程序何时会出问题。
+**一个课下习题**：自己写的`mycopy`修改`BUFSIZE`的大小，从`128B `二倍增长（按理说性能是一直增的，但是增到一个拐点性能肯定会下降），增长到16M， 复制的文件大约3G-5G大小之间。然后出一个表，当`BUFSIZE=128`时，`real time` , `sys time`, `user time`的时间， 然后注意性能的最高拐点出现在`BUFSIZE`多大的时候，以及程序何时会出问题。
 
 一个命令`time ./mycopy /etc/services /tmp/out  `，用来测试后面这个操作执行了多长时间。
 
 ![](https://tcs.teambition.net/storage/3124afcdb64319e92015337abc1908ca695b?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRhZmNkYjY0MzE5ZTkyMDE1MzM3YWJjMTkwOGNhNjk1YiJ9.Qo7kMU4WnyV2hNdz4tK4o72ruVV-s850OdwCmhH8Gpk&download=image.png "")
 
--  real time: 理论上的值是user time + sys time + 一点点时间， 这个一点点时间是调度等待的时间
+-  `real time`: 理论上的值是`user time + sys time + 一点点时间`， 这个一点点时间是调度等待的时间
 
-- user time: 当前操作在user层面消耗的时间
+- `user time`: 当前操作在user层面消耗的时间
 
-- sys time: 当前操作在系统调用层面，或者说在kernel层面所消耗的时间。
+- `sys time`: 当前操作在系统调用层面，或者说在`kernel`层面所消耗的时间。
 
 | BUFZISE | real time | user time | sys time   | info |
 | ------- | --------- | --------- | ---------- | ---- |
@@ -373,9 +373,9 @@ int main()
 | 65536   | 0m7.028s  | 0m0.057s  | 0m1.142s   |      |
 | 131072  | 0m5.323s  | 0m0.040s  | 0m0.804s   |      |
 
-(文件大约1G, 电脑比较慢。。使用得是Windows10的子系统Linux.) **这个结果和老师讲得不一样，差很多，然后并 没找得到拐点。。。先留这个问题。**
+(文件大约1G, 电脑比较慢。。使用得是Windows10的子系统`Linux`.) **这个结果和老师讲得不一样，差很多，然后并 没找得到拐点。。。先留这个问题。**
 
-理论上来说，出现的这个拐点正好是扇区数（block_size）的整倍数
+理论上来说，出现的这个拐点正好是扇区数（`block_size`）的整倍数
 
 
 
@@ -395,7 +395,7 @@ int main()
 
 原子操作的作用：解决竞争和冲突
 
-如：tmpnam函数，是不适合用来创建临时文件的，因为它的操作不原子，容易出现冲突。
+如：`tmpnam`函数，是不适合用来创建临时文件的，因为它的操作不原子，容易出现冲突。
 
 
 
@@ -511,15 +511,15 @@ int main()
 
 - 不要有写越界的现象
 
-- 不要当作自己在写main函数，永远要当作自己在写一个小模块
+- 不要当作自己在写`main`函数，永远要当作自己在写一个小模块
 
 
 
 
 
-## 同步：sync, fsync, fdatasync
+## 同步：`sync`, `fsync`, `fdatasync`
 
-`sync`函数指的是：同步`buffer` 和` cache`, 指的是同步内核层面的buffer和cache。通常什么时候会做这样的操作？？在解除设备挂载的时候。需要把当前正在buffer或者cache当中还没有进行同步的数据刷新以下，会用到sync， 然后下一步解除设备挂载。
+`sync`函数指的是：同步`buffer` 和` cache`, 指的是同步内核层面的`buffer`和`cache`。通常什么时候会做这样的操作？？在解除设备挂载的时候。需要把当前正在`buffer`或者`cache`当中还没有进行同步的数据刷新以下，会用到sync， 然后下一步解除设备挂载。
 
 ![](https://tcs.teambition.net/storage/3124180d13d9fa9554fca11da154271d3593?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQxODBkMTNkOWZhOTU1NGZjYTExZGExNTQyNzFkMzU5MyJ9.XU9z8dlx8iPdnPFaS0FRWu7TBFbnT_AEJBfoCTFti-8&download=image.png "")
 
@@ -543,25 +543,25 @@ int main()
 
 
 
-## fcntl 和 iocntl
+## `fcntl` 和 `iocntl`
 
-### fcntl: 文件描述符所变得魔术几乎都来源于该函数
+### `fcntl`: 文件描述符所变得魔术几乎都来源于该函数
 
 ![](https://tcs.teambition.net/storage/3124c8c926480fde6665e0f315adef239135?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRjOGM5MjY0ODBmZGU2NjY1ZTBmMzE1YWRlZjIzOTEzNSJ9.eLehsIkG6OQuiOAnf6c8NwFhXkFsHWDkcnl5zwNR_xw&download=image.png "")
 
 它的参数有:
 
-- cmd: 命令
+- `cmd:` 命令
 
-- arg: 参数
+- `arg`: 参数
 
 什么是文件描述符相关的魔术？
 
-由于这个函数的cmd不同，所以它的参数arg不同，它的返回值也不同。因为这个函数的功能比较杂，所以称它为管家级别的函数。
+由于这个函数的`cmd`不同，所以它的参数`arg`不同，它的返回值也不同。因为这个函数的功能比较杂，所以称它为管家级别的函数。
 
 
 
-### ioctl: 设备相关的内容都归它管
+### `ioctl`: 设备相关的内容都归它管
 
 ![](https://tcs.teambition.net/storage/3124271d538c6555d30ffcda8f8bd45daf5a?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQyNzFkNTM4YzY1NTVkMzBmZmNkYThmOGJkNDVkYWY1YSJ9.YscZxeED-HaaSobfSXMlXV1MMchSMtLhhvUhlrLVkjc&download=image.png "")
 
@@ -571,9 +571,9 @@ int main()
 
 
 
-## /dev/fd/目录： 虚目录,显示的是当前进程的文件描述符信息
+## `/dev/fd/`目录： 虚目录,显示的是当前进程的文件描述符信息
 
-底下是一些link， 指向当前的标准的设备
+底下是一些`link`， 指向当前的标准的设备
 
 ![](https://tcs.teambition.net/storage/31245db7151bc9a3c9c22ed2b75bba8a4b21?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ1ZGI3MTUxYmM5YTNjOWMyMmVkMmI3NWJiYThhNGIyMSJ9.nIgbYBjdRGSbieyDn-wo-lxM8TYt5wgbkT7yNUR-9KQ&download=image.png "")
 
