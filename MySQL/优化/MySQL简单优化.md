@@ -38,7 +38,7 @@
 
 - 避免全表扫描
 
-- 对于连续值， 能用`between`不要使用`in`或`not int`
+- 对于连续值， 能用`between`不要使用`in`或`not in`
 
 - 在经常`order by`的列上建立索引
 

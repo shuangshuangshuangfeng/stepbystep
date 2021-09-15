@@ -1,4 +1,4 @@
-# synchronized(this)
+# `synchronized(this)`
 
 
 
@@ -6,7 +6,7 @@
 
 - **对于同步方法**，锁住当前对象 （见下文）
 
-- **对于静态同步代码块**，锁住的是当前类的`Class对`象
+- **对于静态同步代码块**，锁住的是当前类的`Class`对象
 - **对于同步代码块**，锁住的是`synchronized`括号中的对象, ？？？
 
 
@@ -90,14 +90,14 @@
    
    ```
 
-运行结果如下：**说明锁住的是object的对象**
+运行结果如下：**说明锁住的是`object`的对象**
 
 ![image-20210908111528066](有关sychronized(this)的一些问题.assets/image-20210908111528066.png)
 
 
 
-4. Java中创建线程主要有三种方式：
-   - 继承Thread类
-   - 现Runnable接口
-   - 使用Callable和Future
+4. `Java`中创建线程主要有三种方式：
+   - 继承`Thread`类
+   - 现`Runnable`接口
+   - 使用`Callable`和`Future`
 

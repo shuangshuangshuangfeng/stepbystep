@@ -2,7 +2,7 @@
 
 ## 1. 线程池的所有类的关系
 
-Java线程池中，**最基础的一个接口：Executor**，ExecutorService继承Executor接口，AbstractExecutorService接口继承ExecutorService：
+`Java`线程池中，**最基础的一个接口：`Executor`**，`ExecutorService`继承`Executor`接口，`AbstractExecutorService`接口继承`ExecutorService`：
 
 ```text
 Executor->ExecutorService->AbstractExecutorService->各种线程池的类
@@ -16,7 +16,7 @@ Executor->ExecutorService->AbstractExecutorService->各种线程池的类
 
 ## 2. 线程池中的几个重要参数
 
-下边是类ThreadPoolExecutor的构造函数
+下边是类`ThreadPoolExecutor`的构造函数
 
 ```java
 
