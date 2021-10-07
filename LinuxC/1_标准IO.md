@@ -338,7 +338,8 @@ int main(int argc, char **argv)
 
 - `*s`: 放入的内存地址
 
-- 
+  
+
 
 **`fgets()`的结束有两种情况：**
 
@@ -590,4 +591,8 @@ int main()
 
 
 **下一章 《**[**系统调用IO**](https://thoughts.teambition.com/share/60694647a86a91004a91d260#title=Linux系统编程笔记（李慧琴）2__系统调用IO)**》**
+
+
+
+
 
