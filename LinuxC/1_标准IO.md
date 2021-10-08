@@ -56,7 +56,7 @@
 
 ### 思维导图介绍：
 
-
+![image-20211008202217148](1_标准IO.assets/image-20211008202217148.png)
 
 
 
@@ -64,7 +64,7 @@
 
 1. `man`手册第三章是标准的库函数, 例如`man fopen`, 会自动跳到第三章
 
-![](https://tcs.teambition.net/storage/31240fc43cb8ae8fa564f1df63bd6ab37c0b?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQwZmM0M2NiOGFlOGZhNTY0ZjFkZjYzYmQ2YWIzN2MwYiJ9.R9ZVMeXiBQnVgf26mX3KHzjkFo-SAU3Kr5S728_Tb6U&download=image.png "")
+![image-20211008202236640](1_标准IO.assets/image-20211008202236640.png)
 
 1. 第二章是系统调用
 
@@ -80,7 +80,7 @@
 
 ### **`man`文档描述：**
 
-![](https://tcs.teambition.net/storage/31242c02ed18e9dedcb1df3db7b1f9b64242?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQyYzAyZWQxOGU5ZGVkY2IxZGYzZGI3YjFmOWI2NDI0MiJ9.j_6lPzDuWwdaXRNExZN8ynFGfSNJ2uRrq1xc2imLxHg&download=image.png "")
+![image-20211008202305808](1_标准IO.assets/image-20211008202305808.png)
 
 **`mode`**参数指向一个字符串，但是只取字符串的第一个字符，所以可以写成`mode="write"`，也可以写成`mode="w"`， 他们的效果是一样的。
 
@@ -176,7 +176,7 @@ int main()
 
 执行结果：
 
-![](https://tcs.teambition.net/storage/3124c5e1bc5691e26ed2043fe6b3577f6dd7?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRjNWUxYmM1NjkxZTI2ZWQyMDQzZmU2YjM1NzdmNmRkNyJ9.LexKBHmv774PWZlzjcYa9J_LFBCzsJaKhg2hRUHxU8Q&download=image.png "")
+![image-20211008202331325](1_标准IO.assets/image-20211008202331325.png)
 
 **注意：** 在不更改当前任何环境的情况下，一个进程打开默认打开了三个流(`stream`), 分别是: `stdin`标准输入、 `stdout`标准输出、 `stderr`标准出错。所以最多可以打开的文件流是`1021+3=1024`个。
 
@@ -186,7 +186,7 @@ int main()
 
 有一个命令，叫做`ulimit -a`
 
-![](https://tcs.teambition.net/storage/31241e755fa6bcfbd959d561969fa356ab86?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQxZTc1NWZhNmJjZmJkOTU5ZDU2MTk2OWZhMzU2YWI4NiJ9.p1KNXIq5pKJTknNSx5uG89sbINhFQCarqd6rhX4YKY8&download=image.png "")
+![image-20211008202351685](1_标准IO.assets/image-20211008202351685.png)
 
 这里显示了`open file`的最大个数是1024.
 
@@ -198,13 +198,13 @@ int main()
 
 如果文件不存在的话，`mode=w`权限会创建文件.
 
-![](https://tcs.teambition.net/storage/3124e22218376dd6e471b39c09728cecfa9d?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRlMjIyMTgzNzZkZDZlNDcxYjM5YzA5NzI4Y2VjZmE5ZCJ9.QN0ZVVghlPuxyna-gbVDefrb3DPPx-bQdHTHEJs5mNY&download=image.png "")
+![image-20211008202413102](1_标准IO.assets/image-20211008202413102.png)
 
 生成的文件权限是<font color='red'>664</font>， 但是程序中，并没有指定文件的权限。这个文件的权限是怎么来的？
 
 **生成的文件的权限是遵循一个公式：**`0666 & ~umask`umask的值是`0002`（0开头的是8进制数）：转换为二进制数是`000 000 010`
 
-![](https://tcs.teambition.net/storage/31240d5da4d9756275fa7030fbd55fa87371?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQwZDVkYTRkOTc1NjI3NWZhNzAzMGZiZDU1ZmE4NzM3MSJ9.kPDklDFq9b6JBa3-OMDRCKOyhlBLgheNs9AywLOxoMA&download=image.png "")
+![image-20211008202426104](1_标准IO.assets/image-20211008202426104.png)
 
 `0666 & ~0002`：-->
 
@@ -224,7 +224,7 @@ int main()
 
 `man`一下`getchar`如下：
 
-![](https://tcs.teambition.net/storage/3124165c76743b7fe72f59fc439bad551fe5?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQxNjVjNzY3NDNiN2ZlNzJmNTlmYzQzOWJhZDU1MWZlNSJ9.WWe5ZxW5BT0QadYPHtC9bHbVhVazyntpFiOewjd-Dy0&download=image.png "")
+![image-20211008202449928](1_标准IO.assets/image-20211008202449928.png)
 
 `getchar()`相当于`getc()`， 默认的输入在`stdin`中来的。
 
@@ -298,7 +298,7 @@ int main(int argc, char **argv)
 
 如果命令行没有输出，则说明两个文件内容相同
 
-![](https://tcs.teambition.net/storage/3124a239ff8f68de62184c7381272ece2538?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRhMjM5ZmY4ZjY4ZGU2MjE4NGM3MzgxMjcyZWNlMjUzOCJ9.gmz5nrk4j8-FzcsLA1cTR5ll8mSfuLoeg5sgzCJxY0g&download=image.png "")
+![image-20211008202523992](1_标准IO.assets/image-20211008202523992.png)
 
 
 
@@ -308,7 +308,7 @@ int main(int argc, char **argv)
 
 `man`一下`gets()`函数如下：
 
-![](https://tcs.teambition.net/storage/3124be9752edecb48c5e8dd42f6a82fcaa59?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRiZTk3NTJlZGVjYjQ4YzVlOGRkNDJmNmE4MmZjYWE1OSJ9.iApXNtbUYWFYtJ4nxhu4jn62xu9MRCsM2kXeWYcz1jM&download=image.png "")
+![image-20211008202539664](1_标准IO.assets/image-20211008202539664.png)
 
 **建议不要使用`gets()`函数，因为它有`Bug`, 它不检查缓冲区的溢出**，我们可以使用`fgets()`代替使用`gets()`。
 
@@ -316,7 +316,7 @@ int main(int argc, char **argv)
 
 ### 为什么`gets()`函数危险？？
 
-![](https://tcs.teambition.net/storage/31244e872168be8470c0a579a1bbcd998677?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ0ZTg3MjE2OGJlODQ3MGMwYTU3OWExYmJjZDk5ODY3NyJ9.GK3R1hmFXJZKbu6GubKlx4c_TyLyPRv8y0iFXGq6IC4&download=image.png "")
+![image-20211008202610414](1_标准IO.assets/image-20211008202610414.png)
 
 因为它只约定了一个地址，从终端上接收来的内容（敲一串字符以后回车， 这行字符串在输入的时候并没有放在指定的地址里面，而是放在了当前的输入缓冲区中，当回车的时候，这串内容才被放到指定的地方去。）
 
@@ -330,7 +330,7 @@ int main(int argc, char **argv)
 
 `char *fgets(char *s, int size, FILE *stream);`
 
-![](https://tcs.teambition.net/storage/31244bbd594e2758745115003909c10f6034?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ0YmJkNTk0ZTI3NTg3NDUxMTUwMDM5MDljMTBmNjAzNCJ9.2VjRsWTziCo1LFKGiJsBgI1rUSNFuPDTfdTMj2ihTxc&download=image.png "")
+![image-20211008202623974](1_标准IO.assets/image-20211008202623974.png)
 
 - `size`: 指定的接收大小
 
@@ -375,7 +375,7 @@ int main(int argc, char **argv)
 
 `man 3 printf`可以看到`printf()`一族的函数
 
-![](https://tcs.teambition.net/storage/3124dbf693421719f520162ed19ef4388362?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRkYmY2OTM0MjE3MTlmNTIwMTYyZWQxOWVmNDM4ODM2MiJ9.d-uVoMITM-Ez9BHl-APa2jeiLd6tmfOEMNVlmlLqxsk&download=image.png "")
+![image-20211008202639350](1_标准IO.assets/image-20211008202639350.png)
 
 `int printf(const char *format, ...);printf()`的函数的功能是，将一些函数按照一定的格式输出到stdout上。
 
@@ -432,7 +432,7 @@ int main()
 
 ## `scanf()`一族函数
 
-![](https://tcs.teambition.net/storage/31246fd5ad3a91a35da9f42c8ac136b97c63?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTI5MiwiaWF0IjoxNjMwOTMwNDkyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ2ZmQ1YWQzYTkxYTM1ZGE5ZjQyYzhhYzEzNmI5N2M2MyJ9.Liy9SG7VrpaTTDRxvDXJeXylZ2_SFCAZ2c49qpygixE&download=image.png "")
+![image-20211008202655191](1_标准IO.assets/image-20211008202655191.png)
 
 **注意** ：在`scanf()`一族的函数中，一定要慎重使用`%s`， 因为在终端上输入的时候，你是不清楚这个字符串有多长的，所以看不到目标位置有多大，这是`scanf`的缺陷之一。
 
@@ -590,7 +590,7 @@ int main()
 
 
 
-**下一章 《**[**系统调用IO**](https://thoughts.teambition.com/share/60694647a86a91004a91d260#title=Linux系统编程笔记（李慧琴）2__系统调用IO)**》**
+
 
 
 

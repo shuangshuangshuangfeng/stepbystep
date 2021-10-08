@@ -86,7 +86,7 @@
 
 若获得一些文件描述符的话，先执行`open`
 
-![](https://tcs.teambition.net/storage/31246f79f6d5ae4cbf91d7e273abb825590e?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ2Zjc5ZjZkNWFlNGNiZjkxZDdlMjczYWJiODI1NTkwZSJ9.CQ-6rCVoBk-OADmtGYxQRT3W55eqZ0aJMBgMKxN13w4&download=image.png "")
+![image-20211008202756507](2_系统调用IO.assets/image-20211008202756507.png)
 
 如果成功，则返回一个文件描述符，如果失败则返回-1 。
 
@@ -120,7 +120,7 @@
 
 在上一章中，使用`fopen`函数去创建文件的时候，是遵循一定的规则去创建文件权限的，在系统调用IO中创建文件，它的权限是？？
 
-![](https://tcs.teambition.net/storage/3124649d5e2f4740c678815f262e7c990671?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ2NDlkNWUyZjQ3NDBjNjc4ODE1ZjI2MmU3Yzk5MDY3MSJ9.PAqNYI20y4M_1xaj_YMiCWAxJpjuGV-nA3PjnSI6mxA&download=image.png "")
+![image-20211008202811891](2_系统调用IO.assets/image-20211008202811891.png)
 
 如果`flag`当中有`CREATE`， 那么一定要用三参的形式，如果`flag`当中没有`CREATE`， 那么一定要有两参的形式。
 
@@ -142,7 +142,7 @@ open的第三个参数是给的权限，当然不是你给多少就有多少，�
 
 `man open` 的结果如下：
 
-![](https://tcs.teambition.net/storage/3124a650884055d61256dcf7a84d27311022?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRhNjUwODg0MDU1ZDYxMjU2ZGNmN2E4NGQyNzMxMTAyMiJ9.gKpTJ1Oek9E4xyl_yxXeF9AFigiZ-zWywh_jCyYEvus&download=image.png "")
+![image-20211008202835026](2_系统调用IO.assets/image-20211008202835026.png)
 
 **注意**：`fd`是一个文件描述符，根据一切皆文件的描述，这个文件描述符可以是指向文件的， 也可以是指向设备的。
 
@@ -152,13 +152,13 @@ open的第三个参数是给的权限，当然不是你给多少就有多少，�
 
 `man write`如下：
 
-![](https://tcs.teambition.net/storage/3124a7da2d93d5f51e41b34ee3958860767f?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRhN2RhMmQ5M2Q1ZjUxZTQxYjM0ZWUzOTU4ODYwNzY3ZiJ9.fY8ml1Tb2qEak_rin0fGQJcyX1tMWCkMjNIAD7iBAbI&download=image.png "")
+![image-20211008202850349](2_系统调用IO.assets/image-20211008202850349.png)
 
 要注意这里的`buf`前的类型是`const`，说明这块内存的地址是不能修改的，而读的话是可以在任意地址读的。
 
 `wirite`的返回值：
 
-![](https://tcs.teambition.net/storage/3124f844b0031d89445d2aed38e627a1516f?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRmODQ0YjAwMzFkODk0NDVkMmFlZDM4ZTYyN2ExNTE2ZiJ9.JxdJz9cb_iqBOreKAvtf46sOs0iRn0t1uz2QPPo3WSI&download=image.png "")
+![image-20211008202903192](2_系统调用IO.assets/image-20211008202903192.png)
 
 如果成功的话，返回字节的个数（注意这个个数可以是0， 也可以是大于0的数），如果不成功，则会返回-1。如果返回值为0的话，表示什么也没写进去，它并不表述出错，大概是由于这些errors中有真错有假错，如果发生了假错，实际上是因为某些阻塞或者非阻塞的事件打断了。
 
@@ -166,7 +166,7 @@ open的第三个参数是给的权限，当然不是你给多少就有多少，�
 
 `man lseek `如下：
 
-![](https://tcs.teambition.net/storage/31245a140f9621133e98808f520d2c246db7?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ1YTE0MGY5NjIxMTMzZTk4ODA4ZjUyMGQyYzI0NmRiNyJ9.E7FtGGG0mEwSPjLXnRzKoSNdq6n8p8PmVLX2hx6NqX4&download=image.png "")
+![image-20211008202918152](2_系统调用IO.assets/image-20211008202918152.png)
 
 可以发现，和`stdio`中的`fseek`函数是类似的。实际上，`fseek`是通过调用`lseek`实现的。
 
@@ -331,13 +331,13 @@ int main()
 
 结果是：
 
-![](https://tcs.teambition.net/storage/31248283cbb31be5896ed4645e95fd632c53?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ4MjgzY2JiMzFiZTU4OTZlZDQ2NDVlOTVmZDYzMmM1MyJ9.rJhFsQPiIrI99pSK6A8WiirJ6IFTOaY6d1pILPC9aLk&download=image.png "")
+![image-20211008202958365](2_系统调用IO.assets/image-20211008202958365.png)
 
 
 
-**注意**：`strace ./print `命令可以帮助我们看一个可执行文件(print)的系统调用是如何发生的。
+**注意**：`strace ./print `命令可以帮助我们看一个可执行文件(`print`)的系统调用是如何发生的。
 
-![](https://tcs.teambition.net/storage/312478c66b6588564116c1cd480e40cff086?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ3OGM2NmI2NTg4NTY0MTE2YzFjZDQ4MGU0MGNmZjA4NiJ9.nXlVPnYwDNngxL39DoYH2MznZUiIjuvVPpW7P73T5ro&download=image.png "")
+![image-20211008203013429](2_系统调用IO.assets/image-20211008203013429.png)
 
 这里可以看到，先写入了三次`b`字符。后面一次写入了`aaa`字符串，系统调用IO中的`write`支撑起了标准IO中的所有写入函数，所以三次`putchar`相当于一次`write`来实现的。所以看到的效果是"bbbaaa"。
 
@@ -351,7 +351,7 @@ int main()
 
 一个命令`time ./mycopy /etc/services /tmp/out  `，用来测试后面这个操作执行了多长时间。
 
-![](https://tcs.teambition.net/storage/3124afcdb64319e92015337abc1908ca695b?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRhZmNkYjY0MzE5ZTkyMDE1MzM3YWJjMTkwOGNhNjk1YiJ9.Qo7kMU4WnyV2hNdz4tK4o72ruVV-s850OdwCmhH8Gpk&download=image.png "")
+![image-20211008203043242](2_系统调用IO.assets/image-20211008203043242.png)
 
 -  `real time`: 理论上的值是`user time + sys time + 一点点时间`， 这个一点点时间是调度等待的时间
 
@@ -401,9 +401,7 @@ int main()
 
 ## 程序中的重定向: dup, dup2
 
-![](https://tcs.teambition.net/storage/31249f6aa8e54874ca23a4850a8e5804110c?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ5ZjZhYThlNTQ4NzRjYTIzYTQ4NTBhOGU1ODA0MTEwYyJ9.76E0IpjTI3pZl4V_lLDLk8DwZTvLUp2_DzBI9k54FYA&download=image.png "")
-
-### dup
+![image-20211008203126087](2_系统调用IO.assets/image-20211008203126087.png)
 
 `dup` 函数，将一个文件描述符放在当前可用范围内最小的数组index中。
 
@@ -468,7 +466,7 @@ dup(fd); // 将当前的文件描述符放在1上，然后相当于将输出重�
 
 所以有了函数`dup2`。它的输入有两个文件标识符，一个新的，一个旧的。将旧的fd放到新的fd上去。
 
-![](https://tcs.teambition.net/storage/3124c7baa68333e5c47560fd580733b86868?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRjN2JhYTY4MzMzZTVjNDc1NjBmZDU4MDczM2I4Njg2OCJ9.CXk8_44ilI9YckoyZ4EaetUdVTrvfA3aGf4Ot3d6Pr4&download=image.png "")
+![image-20211008203146735](2_系统调用IO.assets/image-20211008203146735.png)
 
 ```c
 #include <stdio.h>
@@ -521,13 +519,13 @@ int main()
 
 `sync`函数指的是：同步`buffer` 和` cache`, 指的是同步内核层面的`buffer`和`cache`。通常什么时候会做这样的操作？？在解除设备挂载的时候。需要把当前正在`buffer`或者`cache`当中还没有进行同步的数据刷新以下，会用到sync， 然后下一步解除设备挂载。
 
-![](https://tcs.teambition.net/storage/3124180d13d9fa9554fca11da154271d3593?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQxODBkMTNkOWZhOTU1NGZjYTExZGExNTQyNzFkMzU5MyJ9.XU9z8dlx8iPdnPFaS0FRWu7TBFbnT_AEJBfoCTFti-8&download=image.png "")
+![image-20211008203204529](2_系统调用IO.assets/image-20211008203204529.png)
 
 
 
 `man fsync `结果：
 
-![](https://tcs.teambition.net/storage/31248750c706cc49b3599e1e7a5964afbe53?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ4NzUwYzcwNmNjNDliMzU5OWUxZTdhNTk2NGFmYmU1MyJ9.x88k8QSFn9e2ROgqiF0wFkyd3M7Bicx81NCsTjyUrh4&download=image.png "")
+![image-20211008203219377](2_系统调用IO.assets/image-20211008203219377.png)
 
 - `fsync` 指的是同步一个文件的buffer或cache
 
@@ -547,7 +545,7 @@ int main()
 
 ### `fcntl`: 文件描述符所变得魔术几乎都来源于该函数
 
-![](https://tcs.teambition.net/storage/3124c8c926480fde6665e0f315adef239135?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjRjOGM5MjY0ODBmZGU2NjY1ZTBmMzE1YWRlZjIzOTEzNSJ9.eLehsIkG6OQuiOAnf6c8NwFhXkFsHWDkcnl5zwNR_xw&download=image.png "")
+![image-20211008203235750](2_系统调用IO.assets/image-20211008203235750.png)
 
 它的参数有:
 
@@ -563,7 +561,7 @@ int main()
 
 ### `ioctl`: 设备相关的内容都归它管
 
-![](https://tcs.teambition.net/storage/3124271d538c6555d30ffcda8f8bd45daf5a?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQyNzFkNTM4YzY1NTVkMzBmZmNkYThmOGJkNDVkYWY1YSJ9.YscZxeED-HaaSobfSXMlXV1MMchSMtLhhvUhlrLVkjc&download=image.png "")
+![image-20211008203254600](2_系统调用IO.assets/image-20211008203254600.png)
 
 用于控制设备，是一切皆文件的光环下的垃圾堆，乱七八糟全弄里面了。。
 
@@ -575,7 +573,7 @@ int main()
 
 底下是一些`link`， 指向当前的标准的设备
 
-![](https://tcs.teambition.net/storage/31245db7151bc9a3c9c22ed2b75bba8a4b21?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTM3NSwiaWF0IjoxNjMwOTMwNTc1LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjQ1ZGI3MTUxYmM5YTNjOWMyMmVkMmI3NWJiYThhNGIyMSJ9.nIgbYBjdRGSbieyDn-wo-lxM8TYt5wgbkT7yNUR-9KQ&download=image.png "")
+![image-20211008203317524](2_系统调用IO.assets/image-20211008203317524.png)
 
 
 
