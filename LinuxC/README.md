@@ -1,5 +1,9 @@
 # Linux系统编程目录
 
+[思维导图](/LinuxC/Linux系统编程.md)
+
+
+
 [0. C和指针](/LinuxC/0_C和指针.md)
 
 [1. 标准IO](/LinuxC/1_标准IO.md)
