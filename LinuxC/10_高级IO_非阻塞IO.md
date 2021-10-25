@@ -1,4 +1,4 @@
-
+# 高级IO
 
 
 
@@ -224,7 +224,7 @@ IO多路转接的作用是：监视文件描述符的行为，当看到文件描
 
 
 
-![](https://tcs.teambition.net/storage/31268637c55a0b80582e6bd5b4ab7b9a8287?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTU3NiwiaWF0IjoxNjMwOTMwNzc2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjY4NjM3YzU1YTBiODA1ODJlNmJkNWI0YWI3YjlhODI4NyJ9.BUQK5kNPgDxJIi9VeURsgD1J3F-icf-Gtn3QJk5U_U8&download=image.png "")
+![image-20211025145735831](10_高级IO_非阻塞IO.assets/image-20211025145735831.png)
 
 
 
@@ -236,9 +236,7 @@ IO多路转接的作用是：监视文件描述符的行为，当看到文件描
 
 之前说过sleep不能用，因为一些平台的sleep的实现是用alarm实现的，**select函数如果给定的参数是不包含实际意义的参数，而最后给定的内容是超时设置的话， 那么select的副作用就是可以完成一个安全的可靠的休眠**。
 
-
-
-![](https://tcs.teambition.net/storage/3126e9ee9422bd0a319550523c2e060bd90c?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTU3NiwiaWF0IjoxNjMwOTMwNzc2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjZlOWVlOTQyMmJkMGEzMTk1NTA1MjNjMmUwNjBiZDkwYyJ9.50TUIunxaDNwnbOicsJdTIII8bSH6BjDA0uTDw96_RA&download=image.png "")
+![image-20211025145826081](10_高级IO_非阻塞IO.assets/image-20211025145826081.png)
 
 
 
@@ -270,13 +268,13 @@ select很古老，接口有各种各样的问题，最主要的组织方式是�
 
 ### 对多个小buffer的读写
 
-![](https://tcs.teambition.net/storage/3126fb10eb9ac1e7b3180b0859e06d162d1a?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTU3NiwiaWF0IjoxNjMwOTMwNzc2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjZmYjEwZWI5YWMxZTdiMzE4MGIwODU5ZTA2ZDE2MmQxYSJ9.KI_8Or_cf6DX8bteBPBKuwFdX9zxVyhWdam-KOWXOII&download=image.png "")
+![image-20211025145848486](10_高级IO_非阻塞IO.assets/image-20211025145848486.png)
 
 
 
 注意：第二个参数实际上是一个结构体数组的头指针
 
-![](https://tcs.teambition.net/storage/31263caf621f35ca876f115480d07aefb4a7?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTU3NiwiaWF0IjoxNjMwOTMwNzc2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjYzY2FmNjIxZjM1Y2E4NzZmMTE1NDgwZDA3YWVmYjRhNyJ9.r5lKiAq5lKmVR9RQIOKeTYeU8fAkXOqBZY579nndyIo&download=image.png "")
+![image-20211025145908290](10_高级IO_非阻塞IO.assets/image-20211025145908290.png)
 
 
 
@@ -306,9 +304,11 @@ select很古老，接口有各种各样的问题，最主要的组织方式是�
 
 - offset：偏移量
 
-![](https://tcs.teambition.net/storage/3126aed3e682c2e64d09b5013a1ebe1eca68?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTU3NiwiaWF0IjoxNjMwOTMwNzc2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjZhZWQzZTY4MmMyZTY0ZDA5YjUwMTNhMWViZTFlY2E2OCJ9.Kuj-F-DCrESMO0i-HC720HXd-brlKuP3P7GAG9P-LFA&download=image.png "")
+![image-20211025145947830](10_高级IO_非阻塞IO.assets/image-20211025145947830.png)
 
-![](https://tcs.teambition.net/storage/3126145c239680a4b0a300920586caa8def5?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTU3NiwiaWF0IjoxNjMwOTMwNzc2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjYxNDVjMjM5NjgwYTRiMGEzMDA5MjA1ODZjYWE4ZGVmNSJ9.hilYrxy5Gon4lomaNnaqiir7elsAGHtXhuR_-VXbb5g&download=image.png "")
+
+
+![image-20211025150001204](10_高级IO_非阻塞IO.assets/image-20211025150001204.png)
 
 
 
@@ -422,7 +422,8 @@ int main(){
                 // 父进程
                 // 父进程去读
                 wait(NULL); // 收尸
-                puts(ptr); // 读
+                puts(ptr);
+ // 读
                 munmap(ptr, len);
                 exit(0);
 
@@ -450,7 +451,7 @@ ls | more 就是一个管道，当前这个管道的作用是把一个进程的�
 
 
 
-vim * -p  用vim打开当前文件夹下的所有文件， ctrl +ww 切换
+`vim * -p`  用vim打开当前文件夹下的所有文件， `ctrl +ww `切换
 
 
 

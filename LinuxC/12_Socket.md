@@ -4,21 +4,27 @@
 
 TCP报文如下，有32位的确认序号、32位序列号，确认位ACK、请求位SYN、结束位FIN
 
-![](https://tcs.teambition.net/storage/31270fe622082069ad27d5becc9067014b45?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjcwZmU2MjIwODIwNjlhZDI3ZDViZWNjOTA2NzAxNGI0NSJ9.qBdbAdyDQYB8wYJAe07wY2DZiHw9MdCgWBmA34Z6Kv8&download=image.png "")
+![image-20211025150532468](12_Socket.assets/image-20211025150532468.png)
 
 
 
-![](https://tcs.teambition.net/storage/31286920e0723559c7252182ef6096579716?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg2OTIwZTA3MjM1NTljNzI1MjE4MmVmNjA5NjU3OTcxNiJ9.BgNJFwoEkqptvpD_q4tFiH0jz183XQwB_2vAu4YQWMs&download=image.png "")
+![image-20211025150603688](12_Socket.assets/image-20211025150603688.png)
+
+![image-20211025150619207](12_Socket.assets/image-20211025150619207.png)
+
+
+
+![image-20211025150631932](12_Socket.assets/image-20211025150631932.png)
+
+
 
 
 
 ## 2. TCP 四次挥手
 
-![](https://tcs.teambition.net/storage/3128692668e8c1c8158286c9ca1b115a2cf9?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg2OTI2NjhlOGMxYzgxNTgyODZjOWNhMWIxMTVhMmNmOSJ9.R9uXKhWIjsN-YFZWbSKyM34AKDMvbBOssY--_7QMs7o&download=image.png "")
+![image-20211025150701922](12_Socket.assets/image-20211025150701922.png)
 
 
-
-## 
 
 
 
@@ -34,7 +40,7 @@ TCP报文如下，有32位的确认序号、32位序列号，确认位ACK、请�
 
 intel用的小端序x86、x64的都是小端序，学习一下调试器使用
 
-典型的有两种存储方式：大端存储、小端存储，
+典型的有两种存储方式：大端存储、小端存储
 
 > 大端： 低地址处放高字节
 
@@ -82,9 +88,7 @@ struct{
 
 `socket`是一个中间层，它抽象出来了一个文件描述符，给你一个文件描述符，就可以完成套接字的传输问题，**它连接了底层实现协议与上层实现方式**
 
-
-
-![](https://tcs.teambition.net/storage/312844d09ecd68b8cd69d18e15744808565a?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg0NGQwOWVjZDY4YjhjZDY5ZDE4ZTE1NzQ0ODA4NTY1YSJ9.-0k29yAqpvNjmE96-CSxK96aABR8RMHAg-aVjmg09S0&download=image.png "")
+![image-20211025150840108](12_Socket.assets/image-20211025150840108.png)
 
 - `domain` 协议族
 
@@ -162,7 +166,7 @@ struct{
 
 **bind函数**
 
-![](https://tcs.teambition.net/storage/3128c5940484c334e9da959cbd95cadcb40a?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjhjNTk0MDQ4NGMzMzRlOWRhOTU5Y2JkOTVjYWRjYjQwYSJ9.wuC6BlwoZHZRsvHpimrSh_MC3icCexX2qQ8hryuU4m8&download=image.png "")
+![image-20211025151010297](12_Socket.assets/image-20211025151010297.png)
 
 **不同协议族对于通信地址的约定实际上是不一致的**，所以压根都没有`struct sockaddr `这个类型。具体内容取决于协议族中如何实现的。
 
@@ -176,7 +180,7 @@ struct{
 
 然后我们去做`man 7 ip`, 可以看到它里面的协议约定
 
-![](https://tcs.teambition.net/storage/3128d5e5fc2c0893653186db2b7bace0b3c1?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjhkNWU1ZmMyYzA4OTM2NTMxODZkYjJiN2JhY2UwYjNjMSJ9.naUJMnxEtiG8Cm99YkXgSMyLqvcSk-VOByzfcJmRZlo&download=image.png "")
+![image-20211025151021565](12_Socket.assets/image-20211025151021565.png)
 
 所以，你用的是哪个协议族，就把那个协议的地址填到bind函数的addr上，然后后面天上这个地址的长度。
 
@@ -327,7 +331,7 @@ int main(int argc, char *argv[])
 
 查看路由：` ip ro sh`
 
-![](https://tcs.teambition.net/storage/3128824eb4934689d54660d74a9895a78349?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg4MjRlYjQ5MzQ2ODlkNTQ2NjBkNzRhOTg5NWE3ODM0OSJ9.sfl5X-1k0--jBKbmm99dVoqEVno6-1mbuBkdorIaAW0&download=image.png "")
+![image-20211025151044146](12_Socket.assets/image-20211025151044146.png)
 
 
 
@@ -399,9 +403,7 @@ int main(int argc, char *argv[])
 
 平时可以多用抓包器抓几个包分析一下。。。
 
-![](https://tcs.teambition.net/storage/31282b650d440fdf20e320c6b1d0197c50d8?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjgyYjY1MGQ0NDBmZGYyMGUzMjBjNmIxZDAxOTdjNTBkOCJ9.CyvowFXjr_-s8q_z97fsDvQAPHwPwq3oxh_3AIWNSAo&download=image.png "")
-
-
+![image-20211025151123880](12_Socket.assets/image-20211025151123880.png)
 
 抓包器的安装： `sudo apt install wireshark`
 
@@ -433,7 +435,7 @@ TTL是当前包最多能够经过的个数，在linux环境下默认是64， win
 
 ### 闭环流控： 停等式流控
 
-![](https://tcs.teambition.net/storage/3128744696df30b0517696c0314be9065ebc?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg3NDQ2OTZkZjMwYjA1MTc2OTZjMDMxNGJlOTA2NWViYyJ9.AS_rc281sV7t5X5O0dpmVqjHeGLUASBqIk3rtC6R5lU&download=image.png "")
+![image-20211025151140343](12_Socket.assets/image-20211025151140343.png)
 
 那么 加了停等式流控就能降低丢包率吗？？其实不是的，其实丢包率不会降低，只是我们加了ACK来确保能够收到包，而牺牲了丢包率。
 
@@ -445,9 +447,7 @@ TTL是当前包最多能够经过的个数，在linux环境下默认是64， win
 
 字节流为单位，可能不会涉及到对齐的问题。
 
-
-
-![](https://tcs.teambition.net/storage/31286032b6d870855070115d539459f5edaa?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg2MDMyYjZkODcwODU1MDcwMTE1ZDUzOTQ1OWY1ZWRhYSJ9.5kZ-UHHn-WpHuYHYrSJ7UtmhcR_2O6Vl_5I-2gg08R0&download=image.png "")
+![image-20211025151311778](12_Socket.assets/image-20211025151311778.png)
 
 当前窗口大小比如说是10个，开始，我会一直发，发满整个窗口，然后后面接收到一个ACK，就再发一个包，接收到一个ACK再发一个
 
@@ -455,7 +455,7 @@ TTL是当前包最多能够经过的个数，在linux环境下默认是64， win
 
 ### 但是这种效率并不高，怎么办？？？--> 滑动窗口
 
-![](https://tcs.teambition.net/storage/31289c2f40b2fb01661895e23c1b34244624?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg5YzJmNDBiMmZiMDE2NjE4OTVlMjNjMWIzNDI0NDYyNCJ9.7ID01rJVDoekabFyugRkZqw_bRIji2lEOYrPDuArJyI&download=image.png "")
+![image-20211025151326667](12_Socket.assets/image-20211025151326667.png)
 
 一开始窗口的大小是10个，然后一直发，发满窗口，后面每接收到一个ACK， 再发两个包，每接收到一个ACK再发两个包，一直到网络因为阻塞了，没收到某一个ACK， 然后从检测到丢包的那个包开始，重新传。
 
@@ -467,9 +467,7 @@ TTL是当前包最多能够经过的个数，在linux环境下默认是64， win
 
 因为包发出去后每个包的路径是不确定的，**所以C端和S端在开始之前，需要进行编号的约定**
 
-
-
-![](https://tcs.teambition.net/storage/3128a43ba84f861136a29596a11eda3e375b?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTUzNTYxNiwiaWF0IjoxNjMwOTMwODE2LCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjhhNDNiYTg0Zjg2MTEzNmEyOTU5NmExMWVkYTNlMzc1YiJ9.VOMUhTcgBoIq-0dxhZENv8NWWm9NABHfDKB6-0exLqE&download=image.png "")
+![image-20211025151341821](12_Socket.assets/image-20211025151341821.png)
 
  这就是**典型的TCP的三次握手。。。约定双方的对话格式**。
 
