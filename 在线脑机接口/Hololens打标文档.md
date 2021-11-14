@@ -118,6 +118,16 @@ https://docs.microsoft.com/zh-cn/windows/mixed-reality/mrtk-unity/?view=mrtkunit
 
 
 
+#### 2.3.3 输出无控制台报错
+
+**如果想让控制台无报错显示， 则需要将c#编译时版本选择master， 在C++编译时，选择 MasterWithLTCG**
+
+![image-20211106124331128](Hololens打标文档.assets/image-20211106124331128.png)
+
+
+
+
+
 ## 3. mark打标接收器
 
 实际上就是一个socket的服务端， 接收unity脚本中的客户端发送的mark信息， 然后转打到放大器上。
@@ -263,6 +273,48 @@ public class Hz_15 : MonoBehaviour
 }
 
 ```
+
+
+
+## 5. Unity安装MRTK
+
+
+
+### 5.1 下载
+
+MRTK下载地址[ https://github.com/Microsoft/MixedRealityToolkit-Unity/releases](https://github.com/Microsoft/MixedRealityToolkit-Unity/releases)
+
+下载以下几个包：
+
+![](Hololens打标文档.assets/image-20211107145819941.png)
+
+
+
+### 5.2 导入
+
+导包方式如下， 需要先导入Foundation， 然后导入其他的包
+
+![image-20211107153328998](Hololens打标文档.assets/image-20211107153328998.png)
+
+
+
+所有的包都导入后，关闭项目， 重新打开， 项目中就会出现一个Mixed Reality 的选项
+
+![image-20211107153626414](Hololens打标文档.assets/image-20211107153626414.png)
+
+网上很多说需要做一些配置，但是我发现并不需要配置即可， 也找不到相应的配置， 可能是因为版本更新了。。。
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
