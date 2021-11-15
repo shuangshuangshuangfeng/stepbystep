@@ -1,0 +1,8 @@
+2021/11/15 11:02:22 init.go:31: Mysql Startup Normal!
+2021/11/15 11:02:25 main.go:29: Start to listening the incoming requests on http address: 127.0.0.1:8080
+2021/11/15 11:09:27 init.go:31: Mysql Startup Normal!
+2021/11/15 11:09:27 main.go:29: Start to listening the incoming requests on http address: 127.0.0.1:8080
+2021/11/15 11:11:55 init.go:31: Mysql Startup Normal!
+2021/11/15 11:11:55 main.go:29: Start to listening the incoming requests on http address: 127.0.0.1:8080
+2021/11/15 11:31:50 init.go:31: Mysql Startup Normal!
+2021/11/15 11:31:50 main.go:29: Start to listening the incoming requests on http address: 127.0.0.1:8080

@@ -1,0 +1,6 @@
+mysql:
+  #最大空闲连接数
+  max_idle_conns: 50
+  #链接
+  source_name: root:123456@tcp(127.0.0.1:3306)/shuang?parseTime=true&charset=utf8&loc=Local
+addr: 127.0.0.1:8080                  # HTTP绑定端口
