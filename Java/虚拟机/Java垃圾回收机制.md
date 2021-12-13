@@ -1,4 +1,4 @@
-# <center>Java垃圾回收机制</center>
+# Java垃圾回收机制
 
 **JVM添加参数：**
 
@@ -12,7 +12,7 @@
 
 
 
-## 1.1 Java运行时一个类什么时候被加载？？？
+## 01  Java运行时一个类什么时候被加载
 
 
 
@@ -45,11 +45,11 @@ public class LoadClass {
 
 可以看出首先加载的类是各种类的父类`Object`
 
-![](https://tcs.teambition.net/storage/31283a29601b23fc86e7f3da1e976ac2c8e4?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjgzYTI5NjAxYjIzZmM4NmU3ZjNkYTFlOTc2YWMyYzhlNCJ9.tbjotOGcvR2PmPZW7rRxgO4AUGZwIBA_w2htMHc4XyE&download=image.png "")
+![image-20211213174805189](Java垃圾回收机制.assets/image-20211213174805189.png)
 
 当用到了`LoadClass`类了，才会加载它， 并执行控制台打印。
 
-![](https://tcs.teambition.net/storage/312864e3c993ac76e0b2e050be9c9d393dab?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg2NGUzYzk5M2FjNzZlMGIyZTA1MGJlOWM5ZDM5M2RhYiJ9.VYG1WzLmVq_URaliJWOoNv8fpgQe8hhZJA7c-vxl3oU&download=image.png "")
+![image-20211213174822467](Java垃圾回收机制.assets/image-20211213174822467.png)
 
 
 
@@ -59,7 +59,7 @@ public class LoadClass {
 
 
 
-## 1.2 一个类的加载过程 ？？？
+## 02 一个类的加载过程 
 
 一个类从加载到`JVM`内存，到从`JVM`内存写在，期间经历七个阶段，也就是这个类的生命周期经历七个阶段：(其中验证、准备、解析并称为连接阶段)
 
@@ -76,7 +76,7 @@ public class LoadClass {
 
 class二进制文件长这样：开头 `cafe babe`
 
-![](https://tcs.teambition.net/storage/312802a2a3eab2d04556f366f39452fecdb0?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjgwMmEyYTNlYWIyZDA0NTU2ZjM2NmYzOTQ1MmZlY2RiMCJ9.d5hOuQIe1doNwP-qpk8uxIzDMMiYHa9vkfWveNFNQ5w&download=image.png "")
+![image-20211213175502149](Java垃圾回收机制.assets/image-20211213175502149.png)
 
 
 
@@ -90,7 +90,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 **类变量赋初始值**，int为0， long为0L， boolean为false， 引用类型为null，**常量也赋值**。
 
-![](https://tcs.teambition.net/storage/312894fe8b0348455d878b3a1c09ab95420f?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg5NGZlOGIwMzQ4NDU1ZDg3OGIzYTFjMDlhYjk1NDIwZiJ9.FczBQKxhe033dUaxaML3ThdWwSLZ2sW-uvtXoKxFkCk&download=image.png "")
+![image-20211213175518553](Java垃圾回收机制.assets/image-20211213175518553.png)
 
 
 
@@ -116,7 +116,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 
 
-## 1.3 一个类的初始过程？？？
+## 03 一个类的初始过程
 
 类的初始化阶段， `Java`虚拟机才真正开始执行类中编写的`Java`程序代码。
 
@@ -132,7 +132,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 
 
-## 1.4 继承时父子类的初始化顺序？？？
+## 04  继承时父子类的初始化顺序
 
 1. **加载类：**
 
@@ -166,7 +166,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 
 
-## 1.5 究竟什么是类加载器？？？
+## 05 究竟什么是类加载器
 
 在类加载阶段，通过一个类的全限定名来获取**描述该类的二进制字节流**的这个动作的代码，被称为类加载器，这个动作是可以自定义实现的。读到`JVM的`内存中。
 
@@ -176,9 +176,9 @@ class二进制文件长这样：开头 `cafe babe`
 
 
 
-## 2.1 什么是可回收的垃圾对象？？？
+## 06 什么是可回收的垃圾对象
 
-![](https://tcs.teambition.net/storage/3128034dca62c83ebd30e231b7b41b81a5af?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjgwMzRkY2E2MmM4M2ViZDMwZTIzMWI3YjQxYjgxYTVhZiJ9.ky1BhQOgfgL9Jq8vNPyXyhqrjwuNZaTc6XQpdkqKr0M&download=image.png "")
+![image-20211213175541169](Java垃圾回收机制.assets/image-20211213175541169.png)
 
 
 
@@ -188,13 +188,13 @@ class二进制文件长这样：开头 `cafe babe`
 
 ### （1）引用计数法
 
-![](https://tcs.teambition.net/storage/3128726fae90d372cede9e2fa7259ab6c056?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg3MjZmYWU5MGQzNzJjZWRlOWUyZmE3MjU5YWI2YzA1NiJ9.TqA7Ws5s3DYMd3b-ljuutFBnOBQ14CFTtvVhesnQtY4&download=image.png "")
+![image-20211213175605473](Java垃圾回收机制.assets/image-20211213175605473.png)
 
 **给对象中添加一个引用计数器**，每当一个地方引用它，计数器就会加1，当引用失效，计数器就会减1.任何情况下，计数器为0的对象就是可以被回收的对象，这个方法实现简单，效率高。
 
 但是主流的虚拟机中并没有选择这个算法来管理内存**，起主要原因是它很难解决对象之间相互循环引用的问题**。
 
-![](https://tcs.teambition.net/storage/3128dbf77b5e6be32cbb9c2cc8d7c6f032e3?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjhkYmY3N2I1ZTZiZTMyY2JiOWMyY2M4ZDdjNmYwMzJlMyJ9.BbBJAb_KgKz_oy1BOFD4QluDXamKfMjV5HB1p8AnsyI&download=image.png "")
+![image-20211213175617413](Java垃圾回收机制.assets/image-20211213175617413.png)
 
 
 
@@ -204,13 +204,13 @@ class二进制文件长这样：开头 `cafe babe`
 
 **`GC Root`根节点：线程栈的本地变量、静态变量、本地方法栈的对象等。**
 
-![](https://tcs.teambition.net/storage/3128518ab3ba72b8b864493361d895699ba2?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg1MThhYjNiYTcyYjhiODY0NDkzMzYxZDg5NTY5OWJhMiJ9.nSo_81QMWs-0fQospBLIYM4d7RLzQ6KxastW-ROyqr8&download=image.png "")
+![image-20211213175631316](Java垃圾回收机制.assets/image-20211213175631316.png)
 
 
 
 
 
-## 2.2 垃圾回收算法？？？
+## 07 垃圾回收算法
 
 编程语言有很多种，但是其垃圾回收算法其实就那么几个。
 
@@ -218,7 +218,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 ### （1）标记清除算法
 
-![](https://tcs.teambition.net/storage/3128907b66d58b699c36442a4c5ef5270fe1?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg5MDdiNjZkNThiNjk5YzM2NDQyYTRjNWVmNTI3MGZlMSJ9.nY3mD3J3Fy8uL9dUf5oUzrCG_0ch_2sbCBh3fMCVU68&download=image.png "")
+![image-20211213175646032](Java垃圾回收机制.assets/image-20211213175646032.png)
 
 
 
@@ -228,7 +228,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 ### （2）复制算法
 
-![](https://tcs.teambition.net/storage/3128e9c67eb33ae85463095c7620e607a463?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjhlOWM2N2ViMzNhZTg1NDYzMDk1Yzc2MjBlNjA3YTQ2MyJ9.gjFsXpeIyPTQ9GJq-9gAbQCbv-vwGcfy3bCDnI9YaFY&download=image.png "")
+![image-20211213175658959](Java垃圾回收机制.assets/image-20211213175658959.png)
 
 内存一分为二， 当其中一块清理完后，剩余的对象复制到另一块空间紧密排列。
 
@@ -240,7 +240,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 ### （3）标记整理算法
 
-![](https://tcs.teambition.net/storage/31288c62dbec2422bd75e5c01d1c8cec5e78?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg4YzYyZGJlYzI0MjJiZDc1ZTVjMDFkMWM4Y2VjNWU3OCJ9.JcCyxKEGTIWhLcY5DgSEtgsby_cLIC_6RBJhdEBJ_60&download=image.png "")
+![image-20211213175711978](Java垃圾回收机制.assets/image-20211213175711978.png)
 
 
 
@@ -250,11 +250,11 @@ class二进制文件长这样：开头 `cafe babe`
 
 
 
-## 2.3 垃圾收集器有什么？？？
+## 08 垃圾收集器有什么？？？
 
 到目前为止，一共有十种垃圾收集器，
 
-![](https://tcs.teambition.net/storage/3128145517b4caca46e7946c7a9e3975cc23?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjgxNDU1MTdiNGNhY2E0NmU3OTQ2YzdhOWUzOTc1Y2MyMyJ9.mrq7W6BBKTiyDpNpZYIrJuKD5gqLuAahOshj9R_EC5o&download=image.png "")
+![image-20211213175728242](Java垃圾回收机制.assets/image-20211213175728242.png)
 
 左边的是`JDK1.8`以及之前用的垃圾收集器，而且上部分主要用在内存模型的年轻代，下边的主要用于内存模型的老年代。
 
@@ -264,9 +264,9 @@ class二进制文件长这样：开头 `cafe babe`
 
 
 
-### 什么是年轻代什么是老年代？？？
+### 什么是年轻代什么是老年代
 
-![](https://tcs.teambition.net/storage/3128849b55aff1a1200a571b906c7ee99da0?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg4NDliNTVhZmYxYTEyMDBhNTcxYjkwNmM3ZWU5OWRhMCJ9.s_w2_-bjQqprSuPXf8Jv5PdAsRX6z7qp4XlZAkh1Mjw&download=image.png "")
+![image-20211213175741812](Java垃圾回收机制.assets/image-20211213175741812.png)
 
 **类装载系统**：是将`.class`字节流二进制文件加载到`JVM`的内存中，也就是上面一节讲的类加载器
 
@@ -280,7 +280,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 **注意：堆内存的结构是和`JDK`的版本是有关系的，也就是说使用`JDK`不同的版本，它的内存里面的结构是有区别的。**
 
-![](https://tcs.teambition.net/storage/31288caaa156f7a5ea0927c9405a03b1897c?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg4Y2FhYTE1NmY3YTVlYTA5MjdjOTQwNWEwM2IxODk3YyJ9.Vq5vsswQgWCfyrk1u8MDYwITYG5qjbu0zYkS8mzMVms&download=image.png "")
+![image-20211213175758999](Java垃圾回收机制.assets/image-20211213175758999.png)
 
 **堆内存分为年轻代和老年代，并且年轻代和老年代的内存是有比例的，默认情况下，年轻代是占三分之一，老年代是占三分之二。**但是这个比例是可以调的，根据我们的需求灵活的去调整这个分配。
 
@@ -292,7 +292,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 (3) 如果有的对象一直存在，年龄一直加1，加到一定程度以后（15次），我们就认为这个对象一直被引用，那么就把这个对象放到老年代中，
 
-![](https://tcs.teambition.net/storage/312895b3b020cf32997926733711dab5d42b?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjg5NWIzYjAyMGNmMzI5OTc5MjY3MzM3MTFkYWI1ZDQyYiJ9.Xxk5NdsEoIcgoedAQjXj-kpZD2XPAIQH4Hc-wrYM6IY&download=image.png "")
+![image-20211213175812939](Java垃圾回收机制.assets/image-20211213175812939.png)
 
 
 
@@ -308,7 +308,7 @@ class二进制文件长这样：开头 `cafe babe`
 
 **`jvisualvm`**  用来看`JVM`内存中的情况，是`java`自带的。
 
-![](https://tcs.teambition.net/storage/3128f28012f6659bc06538b9839f31515e07?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjhmMjgwMTJmNjY1OWJjMDY1MzhiOTgzOWYzMTUxNWUwNyJ9.YOzgNL5H8GPhI1ULOakMBtG5nXt_6GXGxQDuh6a_qWM&download=image.png "")
+![image-20211213175841914](Java垃圾回收机制.assets/image-20211213175841914.png)
 
 ```java
 import java.util.ArrayList;
@@ -327,7 +327,7 @@ public class LoadClass {
 
 用上面的代码一直去执行，然后就会把堆内存中的老年代占满，然后报内存溢出的错误。程序结束执行。
 
-![](https://tcs.teambition.net/storage/3128008c316f60311c83d4452c2a9c833923?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjgwMDhjMzE2ZjYwMzExYzgzZDQ0NTJjMmE5YzgzMzkyMyJ9.9sM6ebyZo_cAU_yHOkfgSKfaPdzTQ1jfXPM4Ps5sceA&download=image.png "")
+![image-20211213175901077](Java垃圾回收机制.assets/image-20211213175901077.png)
 
 
 
@@ -341,9 +341,9 @@ public class LoadClass {
 
 `CMS`的优点就是处理较大的内存数据比较快，相比于其他的垃圾回收器要快得多，它使用的算法是标记清楚法，所以他也有一个缺点，就是有空间碎片
 
-![](https://tcs.teambition.net/storage/3128e27b54f6ec8ac51f59def272c9de9f28?Signature=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBcHBJRCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9hcHBJZCI6IjU5Mzc3MGZmODM5NjMyMDAyZTAzNThmMSIsIl9vcmdhbml6YXRpb25JZCI6IiIsImV4cCI6MTYzMTU0NjI2MiwiaWF0IjoxNjMwOTQxNDYyLCJyZXNvdXJjZSI6Ii9zdG9yYWdlLzMxMjhlMjdiNTRmNmVjOGFjNTFmNTlkZWYyNzJjOWRlOWYyOCJ9.CmQb9RppPrKaBHNdhyJiszyFC2VPyS7AJ5EgWSW1uSA&download=image.png "")
+![image-20211213175914779](Java垃圾回收机制.assets/image-20211213175914779.png)
 
-## 2.4 内存屏障
+## 09 内存屏障
 
 内存屏障（`Memory Barrier`，或有时叫做内存栅栏，`Memory Fence`）是一种CPU指令，用于控制特定条件下的重排序和内存可见性问题。Java编译器也会根据内存屏障的规则禁止重排序。
 
