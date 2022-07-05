@@ -1,6 +1,6 @@
 # synchronized(this)
 
-### 1. `synchronized`锁住的对象：
+### 1. synchronized锁住的对象：
 
 - **对于同步方法**，锁住当前对象 （见下文）
 
@@ -53,8 +53,6 @@ class ObjectA{
 }
 ```
 
-   
-
 ```java
 public class Test extends Thread{
      public ObjectA obA;
@@ -88,15 +86,10 @@ public class Test extends Thread{
 
 ![image-20210908111528066](有关sychronized(this)的一些问题.assets/image-20210908111528066.png)
 
-
 ### 4. Java`中创建线程主要有三种方式：
-
-
 
 - 继承`Thread`类
 
 - 使用`Callable`和`Future`
 
 - 实现`Runnable`接口
-
-
