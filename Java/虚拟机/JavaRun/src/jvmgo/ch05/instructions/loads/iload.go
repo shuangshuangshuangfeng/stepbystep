@@ -20,6 +20,9 @@ func (self *ILOAD) Execute(frame *rtda.Frame){
 type ILOAD_0 struct {
 	base.NoOperandsInstruction
 }
+func (self *ILOAD_0) Execute(frame *rtda.Frame){
+	_iload(frame, 0)
+}
 
 type ILOAD_1 struct {
 	base.NoOperandsInstruction

@@ -2,18 +2,34 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 import "jvmgo/ch05/classpath"
 import "jvmgo/ch05/classfile"
 import "jvmgo/ch05/rtda"
 
+func getMainMethod(cf *classfile.ClassFile) *classfile.MemberInfo{
+	for _, m := range cf.Methods(){
+		if m.Name() == "main" && m.Descriptor() == "([Ljava/lang/String;)V" {
+			return m
+		}
+	}
+	return nil
+}
+
 
 func startJVM(cmd  *Cmd){
 	fmt.Printf("start JVM ...\n")
-	frame := rtda.NewFrame(100, 100)
-	testLocalVars(frame.LocalVars())
-	testOperandStack(frame.OperandStack())
+	cp := classpath.Parse(cmd.XjreOption, cmd.cpOption)
+	className := strings.Replace(cmd.class, ".", "/", -1)
+	cf := loadClass(className, cp)
+	mainMethod := getMainMethod(cf)
+	if mainMethod != nil{
+		interpret(mainMethod)
+	}else{
+		fmt.Printf("Main method not found in class %s \n", cmd.class)
+	}
 }
 
 // 测试局部变量表

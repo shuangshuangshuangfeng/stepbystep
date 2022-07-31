@@ -11,9 +11,7 @@ type Instruction interface {
 type NoOperandsInstruction struct { // 没有操作数的指令
 }
 
-func (self *NoOperandsInstruction) FetchOperands(reader *BytecodeReader){
-
-}
+func (self *NoOperandsInstruction) FetchOperands(reader *BytecodeReader){}
 
 type BranchInstruction struct { // 跳转指令
 	Offset int // 跳转偏移量

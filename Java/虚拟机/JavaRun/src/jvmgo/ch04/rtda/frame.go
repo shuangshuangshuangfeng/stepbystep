@@ -1,5 +1,7 @@
 package rtda
 
+// Java虚拟机栈
+// 其中保存着方法执行的状态，主要由局部变量表和操作数栈
 type Frame struct {
 	lower *Frame
 	localVars LocalVars // 保存局部变量表指针
@@ -20,3 +22,4 @@ func (self *Frame)LocalVars() LocalVars {
 func (self *Frame) OperandStack() *OperandStack{
 	return self.operandStack
 }
+
