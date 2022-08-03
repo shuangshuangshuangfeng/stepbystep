@@ -22,4 +22,20 @@ set http_proxy_pass=xxx
 
 ## 
 
+## 2. Telnet使用
+
+**（1）安装**
+
+telnet是windows的服务，但是使用前需要先安装
+
+开始->控制面板->程序与功能->打开或关闭Windows功能->勾选Telnet客户端
+
+![](assets/2022-08-02-09-37-55-image.png)
+
+**（2）使用**
+
+```shell
+telnet ip port // 例如： telnet 10.222.21.2 8080
+```
+
 
