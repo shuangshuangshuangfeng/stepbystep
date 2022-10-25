@@ -26,6 +26,7 @@ public class Main {
         List<Book> bookList = prepareData();
 
         // 要被找出的书的ID
+        // 这个输入法是真的很好用
         ArrayList<String> ids = new ArrayList<String>();
         ids.add("3");
         ids.add("6");

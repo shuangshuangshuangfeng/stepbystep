@@ -37,5 +37,3 @@ telnet是windows的服务，但是使用前需要先安装
 ```shell
 telnet ip port // 例如： telnet 10.222.21.2 8080
 ```
-
-
