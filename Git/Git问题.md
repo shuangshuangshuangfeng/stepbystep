@@ -13,3 +13,5 @@
 ## 3. 远程删除分支
 
 > git push origin --delete feat_name
+
+**注意：** 删除远程分支后，记得删除本地分支

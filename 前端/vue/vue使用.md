@@ -26,8 +26,6 @@
 
 - 
 
-
-
 ## 2. 知识点
 
 Vue.js 的核心是一个允许采用简洁的模板语法来声明式地将数据渲染进 DOM 的系统：
@@ -49,4 +47,22 @@ var app = new Vue({
 
 :sunny: 注意: 不再直接写 HTML 文件，不再与HTML交互。 **一个 Vue 应用会将其挂载到一个 DOM 元素上**   (对于这个例子是 `#app`) ，然后对其进行完全控制。那个 **HTML 是我们的入口**，但其余都会发生在新创建的 Vue 实例内部。
 
+## 3. 使用
 
+（1）查看vue-cli的版本
+
+> vue -V
+
+![](../../assets/2022-11-10-10-44-06-image.png)
+
+（2）全局卸载Vue
+
+> npm uninstall -g @vue/cli
+
+![](../../assets/2022-11-10-10-52-03-image.png)
+
+（3）全局安装Vue
+
+> npm install -g @vue/cli@3  #  3版本
+
+![](../../assets/2022-11-10-10-52-32-image.png)
