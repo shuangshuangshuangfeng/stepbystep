@@ -10,10 +10,6 @@
 
 - EventBus传参
 
-
-
-
-
 ## export 与 export default区别
 
 ![](https://img2018.cnblogs.com/i-beta/866435/202001/866435-20200112005102573-758273940.png)
