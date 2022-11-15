@@ -113,3 +113,31 @@
 > docker build -t <image_name> -f <dockerfile_name> <dockerfile_path>
 
 ![](../../assets/2022-10-31-17-48-29-image.png)
+
+写一个Dockerfile
+
+```shell
+FROM ubuntu:22.04
+
+RUN echo '这里是nginx'
+
+RUN cd ~ 
+
+RUN touch aaa.txt
+```
+
+然后执行dockerfile (记得加上最后的那个点)
+
+> docker build -t shuang .   
+
+![](../../assets/2022-11-14-14-20-52-image.png)
+
+--->后面是镜像的ID
+
+进入镜像去看一眼：
+
+> docker run -it id /bin/bash
+
+![](../../assets/2022-11-14-14-23-17-image.png)
+
+可以看到已经创建了aaa.txt这个文件

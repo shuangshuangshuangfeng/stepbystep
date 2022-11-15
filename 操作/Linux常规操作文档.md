@@ -60,10 +60,10 @@ Alt + l ：从光标处更改为全部小写的单词
 Ctrl + t ：交换光标处和之前的字符
 Alt + t ：交换光标处和之前的单词
 
+（7）文本编辑器 命令行打开方式：
 
-
-（7）vscode 命令行打开方式：
-
-> code filename
+> code filename  // vscode
 
 ![](../assets/2022-11-14-10-07-21-image.png)
+
+> 
