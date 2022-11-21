@@ -1,5 +1,7 @@
 ## 1. docker 的基本使用流程
 
+[Docker (简体中文) - ArchWiki](https://wiki.archlinux.org/title/Docker_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
+
 （1）新建一个新的容器并运行
 
 > docker run -it ubuntu:22.04 /bin/bash
@@ -13,6 +15,8 @@
 （3）启动一个容器
 
 > docker container start id
+> 
+> docker start id
 
 > docker exec -it id /bin/bash
 
