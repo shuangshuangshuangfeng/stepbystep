@@ -11,5 +11,3 @@
 2. **ssh授权远程登录**
 
 （1）打开/etc/ssh/sshd_config文件
-
-

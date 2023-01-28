@@ -44,17 +44,9 @@ final Node<K,V> getNode(int hash, Object key) {
 }
 ```
 
-
-
-
-
 ## `put` JDK1.8以后
 
-
-
 自己实现的思路：
-
-
 
 ```java
 public V put(K key, V value) {
@@ -131,6 +123,4 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
     afterNodeInsertion(evict);
     return null;
 }
-
 ```
-

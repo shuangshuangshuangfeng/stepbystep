@@ -23,5 +23,3 @@
 > soure deactivate vir_name
 
 ![](../../../assets/2022-11-03-17-11-45-image.png)
-
-

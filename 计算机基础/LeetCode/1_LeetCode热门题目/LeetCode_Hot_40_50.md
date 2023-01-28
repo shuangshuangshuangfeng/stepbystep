@@ -18,7 +18,7 @@ class Solution {
         }
         return dp[n];
     }
-    
+
 }
 ```
 
@@ -41,16 +41,13 @@ class Solution {
                 if(node.left != null) tmp.offer(node.left);
                 if(node.right != null) tmp.offer(node.right);
             }
-           
+
             queue = tmp;
         }
         return height;
     }
 }
-
 ```
-
-
 
 ```java
 class Solution {
@@ -63,8 +60,6 @@ class Solution {
     }
 }
 ```
-
-
 
 [105. 从前序与中序遍历序列构造二叉树 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 
@@ -81,7 +76,7 @@ class Solution {
         // 找到根节点在中序序列中的位置
         int idx = li;
         while (idx<=ri && inorder[idx] != preorder[lp] ) idx++;
-        
+
         int leftLen = idx-li;
 
         node.left = build(preorder, lp+1, lp+leftLen+1, inorder, li, idx-1);
@@ -245,30 +240,3 @@ public class Solution {
     }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
