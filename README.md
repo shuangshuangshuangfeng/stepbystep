@@ -1,22 +1,36 @@
 # shuangshuang加油，冲冲冲！
 
-[1. Java](/Java/README.md)
 
-[2. Linux C 系统编程](/LinuxC/README.md)
 
-[3. MySQL](/MySQL/README.md)
+## 1. 编程语言学习
 
-[4. LeetCode](/LeetCode/README.md)
+主要包括：C、C++、Java、Python、Go、前端语言的基础学习笔记。
 
-[5. 计算机基础](/Os/README.md)
 
-[6. Go](/Go/README.md)
 
-[7. Git](/Git/README.md)
+## 2. 计算机基础
 
-[8. Python](/Python/README.md)
+主要包括：编译原理、LeetCode笔记等。
 
-[9. 操作](/操作/README.md)
+
+
+## 3. Linux
+
+主要包括
+
+
+
+## 4. 操作
+
+
+
+
+
+## 5. 复盘
+
+
+
+
 
 <br>
 
