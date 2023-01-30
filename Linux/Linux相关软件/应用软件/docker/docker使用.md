@@ -10,7 +10,7 @@
 
 > docker ps -a
 
-![](../../assets/2022-10-25-11-04-56-image.png)
+![](../../../../assets/2022-10-25-11-04-56-image.png)
 
 （3）启动一个容器
 
@@ -20,23 +20,23 @@
 
 > docker exec -it id /bin/bash
 
-![](../../assets/2022-10-25-11-08-47-image.png)
+![](../../../../assets/2022-10-25-11-08-47-image.png)
 
 （4）查看正在运行的容器
 
 > docker container ls
 
-![](../../assets/2022-10-25-11-07-29-image.png)
+![](../../../../assets/2022-10-25-11-07-29-image.png)
 
 > docker ps
 
-![](../../assets/2022-10-25-11-52-29-image.png)
+![](../../../../assets/2022-10-25-11-52-29-image.png)
 
 （5）进入正在运行的容器：
 
 > docker attach containerID
 
-![](../../assets/2022-11-01-13-59-42-image.png)
+![](../../../../assets/2022-11-01-13-59-42-image.png)
 
 （6）删除容器
 
@@ -46,7 +46,7 @@
 
 > docker container stop id
 
-![](../../assets/2022-10-25-11-49-53-image.png)
+![](../../../../assets/2022-10-25-11-49-53-image.png)
 
 ## 2. 外部访问容器
 
@@ -60,7 +60,7 @@
 
 > docker port id
 
-![](../../assets/2022-10-25-12-03-30-image.png)
+![](../../../../assets/2022-10-25-12-03-30-image.png)
 
 ## 3. 挂载外部文件或目录
 
@@ -70,9 +70,9 @@
 
 将当前目录挂载到容器的`/usr/local/src`目录上：
 
-![](../../assets/2022-10-31-09-45-02-image.png)
+![](../../../../assets/2022-10-31-09-45-02-image.png)
 
-![](../../assets/2022-10-31-09-46-15-image.png)
+![](../../../../assets/2022-10-31-09-46-15-image.png)
 
 需要注意的是： 当宿主机对文件进行修改，那么容器中的文件也会被修改，被称为：**双向数据同步**。
 
@@ -80,7 +80,7 @@
 
 > docker pull  [OPTIONS] NAME[:TAG|@DIGEST]
 
-![](../../assets/2022-10-31-09-55-14-image.png)
+![](../../../../assets/2022-10-31-09-55-14-image.png)
 
 ## 5. docker 免sudo登录
 
@@ -98,11 +98,11 @@
 
 > sudo find / -name 'docker' 2>/dev/null
 
-![](../../assets/2022-10-31-10-32-10-image.png)
+![](../../../../assets/2022-10-31-10-32-10-image.png)
 
 （2）查看docker执行文件权限
 
-![](../../assets/2022-10-31-10-31-35-image.png)
+![](../../../../assets/2022-10-31-10-31-35-image.png)
 
 （3）docker其属组为docker
 
@@ -116,7 +116,7 @@
 
 > docker build -t <image_name> -f <dockerfile_name> <dockerfile_path>
 
-![](../../assets/2022-10-31-17-48-29-image.png)
+![](../../../../assets/2022-10-31-17-48-29-image.png)
 
 写一个Dockerfile
 
@@ -134,7 +134,7 @@ RUN touch aaa.txt
 
 > docker build -t shuang .   
 
-![](../../assets/2022-11-14-14-20-52-image.png)
+![](../../../../assets/2022-11-14-14-20-52-image.png)
 
 `--->`后面是镜像的ID
 
@@ -142,6 +142,6 @@ RUN touch aaa.txt
 
 > docker run -it id /bin/bash
 
-![](../../assets/2022-11-14-14-23-17-image.png)
+![](../../../../assets/2022-11-14-14-23-17-image.png)
 
 可以看到已经创建了aaa.txt这个文件
