@@ -29,30 +29,30 @@ sudo bash configure
 2. 下载openjdk源码（注意： **下载openjdk中打过tag的源码**）
 
 3. 进入JDK源码目录
-   
-   ```shell
+
+```shell
    bash configure --with-debug-level=slowdebug --with-jvm-variants=server  --disable-warnings-as-errors
-   ```
-   
-   ![](../../assets/2023-01-03-14-06-55-image.png)
-   
+```
+
+![](../../assets/2023-01-03-14-06-55-image.png)
+
    在这个过程中，如果有些依赖没有被安装，会不断的中断，例如下图：
-   
-   ![](../../assets/2023-02-01-14-46-24-image.png)
-   
+
+![](../../assets/2023-02-01-14-46-24-image.png)
+
    然后需要根据提示，安装不同的依赖。
-   
+
    会有如下显示，则表示配置成功。
-   
-   ![](../../assets/2023-02-01-14-48-39-image.png)
-   
+
+![](../../assets/2023-02-01-14-48-39-image.png)
+
    然后进行编译，并等待...
-   
-   ```shell
+
+```shell
    sudo make all
-   ```
-   
-   ![](../../assets/2023-02-01-14-51-06-image.png)
+```
+
+![](../../assets/2023-02-01-14-51-06-image.png)
 
 4. `make`完成后，在JDK根目录下会有一个build文件夹，其中则是编译好的JDK。
 
