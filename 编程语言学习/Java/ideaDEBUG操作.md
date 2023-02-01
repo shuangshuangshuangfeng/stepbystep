@@ -1,4 +1,4 @@
-## 1. IDEA DEBUG 布局
+## 1. IDEA DEBUG 布局(windows笔记本有图，记得找下)
 
 ### 1.1  栈帧
 

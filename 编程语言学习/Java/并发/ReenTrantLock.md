@@ -3,10 +3,6 @@
 可重入锁：synchronized 关键字实现的是可重入锁，即已经获取锁的线程可以再次获取锁
 独占锁或者排他锁：synchronized 关键字实现的是独占锁，即该锁只能被一个线程所持有，其他线程均被阻塞
 
-
-
-
-
 重要：
 
 https://blog.csdn.net/liuwg1226/article/details/119905478
