@@ -10,8 +10,9 @@
       <sourceFolder url="file://$MODULE_DIR$/List/src/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/Queue/src/main" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Queue/src/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="18-src" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jdk-18.0.2" level="project" />
   </component>
