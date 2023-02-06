@@ -124,6 +124,6 @@ github地址： https://github.com/coreutils/coreutils/
 }
 ```
 
-然后就可以调试程序了，也可以切换为其他的程序。
+然后就可以调试程序了，也可以切换为其他的程序。~~~~
 
 

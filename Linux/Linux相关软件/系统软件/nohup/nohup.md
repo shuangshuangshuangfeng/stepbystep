@@ -16,17 +16,11 @@
 
 ![](../../../../assets/2023-01-31-11-12-04-image.png)
 
-
-
 ## 3. 源码分析
 
 源码位置：[coreutils/nohup.c at master · coreutils/coreutils · GitHub](https://github.com/coreutils/coreutils/blob/master/src/nohup.c)
 
-```c
-
-```
-
-
+[coreutils/nohup.c at master · shuangshuangshuangfeng/coreutils · GitHub](https://github.com/shuangshuangshuangfeng/coreutils/blob/master/src/nohup.c)
 
 ### 3.1 引用
 
