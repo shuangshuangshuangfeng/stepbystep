@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="18">
-      <module name="HelloWorld" target="18" />
-      <module name="List" target="18" />
-      <module name="Queue" target="18" />
+      <module name="HelloWorld" target="19" />
+      <module name="List" target="19" />
+      <module name="Queue" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>

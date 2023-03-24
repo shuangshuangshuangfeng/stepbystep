@@ -81,3 +81,11 @@ Alt + t ：交换光标处和之前的单词
 > nc -lvkp 3306
 
 ![](../assets/2022-12-23-09-28-17-image.png)
+
+
+
+(10)apt卸载软件xxx
+
+> sudo apt-get purge XXX
+
+![](../assets/2023-02-27-11-55-36-image.png)

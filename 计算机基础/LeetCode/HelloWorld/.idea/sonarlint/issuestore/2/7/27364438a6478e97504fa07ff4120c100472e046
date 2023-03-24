@@ -1,0 +1,35 @@
+
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çÑ¸Ÿøÿÿÿÿ8¸¶–ôä0
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁØ8¹¶–ôä0
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½ë´¢8¹¶–ôä0
+r	java:S117	"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ëùœøÿÿÿÿ8¹¶–ôä0
+r	java:S117
+"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸½ëúÿÿÿÿ8¹¶–ôä0
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü×òÅûÿÿÿÿ8¹¶–ôä0
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í ŸÎ8¹¶–ôä0
+7
+java:S1220""Move this file to a named package.8Á¶–ôä0
+|
+java:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰8ø¸–ôä0
+Z
+java:S1854"8Remove this useless assignment to local variable "flag".(Šéô²úÿÿÿÿ8¹–ôä0
+F
+java:S1172"*Remove this unused method parameter "num".(™Â8š¹–ôä0
+L
+java:S1481"*Remove this unused "cnt_M" local variable.(çÑ¸Ÿøÿÿÿÿ8 ¹–ôä0
+G
+java:S1481"*Remove this unused "cnt_D" local variable.(ÁØ8 ¹–ôä0
+G
+java:S1481"*Remove this unused "cnt_C" local variable.(½ë´¢8 ¹–ôä0
+L
+java:S1481	"*Remove this unused "cnt_L" local variable.(Ëùœøÿÿÿÿ8 ¹–ôä0
+L
+java:S1481
+"*Remove this unused "cnt_X" local variable.(¸½ëúÿÿÿÿ8¡¹–ôä0
+L
+java:S1481"*Remove this unused "cnt_V" local variable.(Ü×òÅûÿÿÿÿ8¡¹–ôä0
+G
+java:S1481"*Remove this unused "cnt_I" local variable.(Í ŸÎ8¡¹–ôä0
+K
+java:S1481")Remove this unused "flag" local variable.(Šéô²úÿÿÿÿ8©¹–ôä0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(ÔÓÁŒ8¯¹–ôä0
