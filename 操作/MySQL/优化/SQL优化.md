@@ -41,5 +41,3 @@ and a.D_OPTime <= '2023-02-11 00:00:00'
 **返回结果怎么看？**
 
 [MySQL EXPLAIN 详解 - 掘金](https://juejin.cn/post/6953444668973514789)
-
-
