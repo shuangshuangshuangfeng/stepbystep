@@ -82,8 +82,6 @@ Alt + t ：交换光标处和之前的单词
 
 ![](../assets/2022-12-23-09-28-17-image.png)
 
-
-
 (10)apt卸载软件xxx
 
 > sudo apt-get purge XXX
