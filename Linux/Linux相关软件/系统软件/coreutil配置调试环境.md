@@ -14,7 +14,7 @@ github地址： https://github.com/coreutils/coreutils/
 
 本地需要安装以下软件：
 
-![](../../../assets/2023-02-06-13-37-23-image.png)
+![](../../../操作/assets/2023-02-06-13-37-23-image.png)
 
 大部分都可以使用`sudo apt install xxx` 来安装（注意：首字母要小写）
 
@@ -80,7 +80,7 @@ github地址： https://github.com/coreutils/coreutils/
 
 可以看到安装路径下已经有了打包好的可执行文件。
 
-![](../../../assets/2023-02-06-13-46-59-image.png)
+![](../../../操作/assets/2023-02-06-13-46-59-image.png)
 
 ## 4. 进行调试运行配置
 
@@ -125,5 +125,3 @@ github地址： https://github.com/coreutils/coreutils/
 ```
 
 然后就可以调试程序了，也可以切换为其他的程序。~~~~
-
-

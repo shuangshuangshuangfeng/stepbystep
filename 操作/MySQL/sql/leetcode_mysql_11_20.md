@@ -41,4 +41,3 @@ select round(ifnull(
     (select count(distinct sender_id, send_to_id) from FriendRequest)
     ,0),2) accept_rate;
 ```
-

@@ -37,7 +37,7 @@ having count(p.Email)>1;
 ```
 
 5. [183. 从不订购的客户 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/customers-who-never-order/)
-
+   
    ```sql
    select c.name as 'Customers'
    from Customers as c 
@@ -61,7 +61,6 @@ select w1.id
 from weather as w1 join weather as w2
 on (w1.recordData = adddate(w2.recordData, INTERVAL 1 DAY ))
 where w1.temperature> w2.temperature;
-
 ```
 
 8. [511. 游戏玩法分析 I - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/game-play-analysis-i/submissions/)
@@ -82,7 +81,6 @@ where (b.player_id, b.event_date) in(
     from Activity as a 
     group by player_id
 )
-
 ```
 
 10. [577. 员工奖金 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/employee-bonus/)
@@ -92,6 +90,4 @@ select name, bonus
 from Employee left join Bonus
 on Employee.EmpId = Bonus.EmpId
 where Bonus.bonus<1000 or Bonus.bonus is null;
-
 ```
-

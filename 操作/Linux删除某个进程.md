@@ -4,8 +4,4 @@
 
 > ps aux | grep XXX
 
-
-
 > kill -9 XXX
-
-

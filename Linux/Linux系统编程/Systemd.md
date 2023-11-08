@@ -8,8 +8,6 @@
 
 - 启动脚本复杂。init进程只启动执行脚本，不管其他。
 
-
-
 ## Systemd
 
 为了解决以上两个问题，使用Systemd，二不再使用init。 Systemd取代了initd，成为系统的第一个进程（PID为1），其他的进程都是它的子进程。
@@ -53,5 +51,3 @@
 [技术|systemctl 命令完全指南](https://linux.cn/article-5926-1.html)
 
 https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
-
-

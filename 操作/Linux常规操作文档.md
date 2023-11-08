@@ -6,7 +6,7 @@
 
 > chmod -R 777 path
 
-![](../assets/2022-11-03-16-39-35-image.png)
+![](../操作/assets/2022-11-03-16-39-35-image.png)
 
 其中： r=4,w=2,x=1
 
@@ -16,11 +16,11 @@
 
 > echo $PATH
 
-![](../assets/2022-11-07-11-11-39-image.png)
+![](../操作/assets/2022-11-07-11-11-39-image.png)
 
 在`.bash_profile`文件中添加环境变量
 
-![](../assets/2022-11-07-11-14-30-image.png)
+![](../操作/assets/2022-11-07-11-14-30-image.png)
 
 （4）修改本地host文件
 
@@ -30,13 +30,13 @@
 
 > sudo  systemctl restart networkManager  # 重启网络服务
 
-![](../assets/2022-11-07-18-07-22-image.png)
+![](../操作/assets/2022-11-07-18-07-22-image.png)
 
 （5）回到上一目录
 
 > cd -(减号)
 
-![](../assets/2022-11-07-18-04-43-image.png)
+![](../操作/assets/2022-11-07-18-04-43-image.png)
 
 （6）快捷键
 
@@ -64,26 +64,26 @@ Alt + t ：交换光标处和之前的单词
 
 > code filename  // vscode
 
-![](../assets/2022-11-14-10-07-21-image.png)
+![](../操作/assets/2022-11-14-10-07-21-image.png)
 
 （8）查看端口是否开放
 
 > lsof -i:80 // 若无反映，则没开放
 
-![](../assets/2022-11-21-10-29-17-image.png)
+![](../操作/assets/2022-11-21-10-29-17-image.png)
 
 > natstat -ant
 
-![](../assets/2022-11-21-10-59-31-image.png)
+![](../操作/assets/2022-11-21-10-59-31-image.png)
 
 (9) 监听端口是否被连接
 
 > nc -lvkp 3306
 
-![](../assets/2022-12-23-09-28-17-image.png)
+![](../操作/assets/2022-12-23-09-28-17-image.png)
 
 (10)apt卸载软件xxx
 
 > sudo apt-get purge XXX
 
-![](../assets/2023-02-27-11-55-36-image.png)
+![](../操作/assets/2023-02-27-11-55-36-image.png)

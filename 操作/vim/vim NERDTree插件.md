@@ -14,7 +14,7 @@ cd dir   &&  vim
 NERDTree
 ```
 
-![](../../assets/2022-09-26-16-58-01-image.png)
+![](../../操作/assets/2022-09-26-16-58-01-image.png)
 
 （3）使用enter键 进行操作
 

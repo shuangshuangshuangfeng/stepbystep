@@ -15,5 +15,3 @@ $ git config --local user.email xxx
 # 查询
 $ git config --local -l
 ```
-
-
