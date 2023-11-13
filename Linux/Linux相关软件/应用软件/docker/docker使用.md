@@ -2,7 +2,7 @@
 
 [Docker (简体中文) - ArchWiki](https://wiki.archlinux.org/title/Docker_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
-（1）新建一个新的容器并运行
+（1）新建一个新的容器并运行(`-i`: 表示交互式， `-t`: 表示tty，`-d`: 表示守护进程)
 
 > docker run -it ubuntu:22.04 /bin/bash
 
