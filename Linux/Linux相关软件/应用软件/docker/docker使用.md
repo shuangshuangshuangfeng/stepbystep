@@ -1,4 +1,4 @@
-## 1. docker 的基本使用流程
+#### 1. docker 的基本使用流程
 
 [Docker (简体中文) - ArchWiki](https://wiki.archlinux.org/title/Docker_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
@@ -48,7 +48,7 @@
 
 ![](../../../../操作/assets/2022-10-25-11-49-53-image.png)
 
-## 2. 外部访问容器
+#### 2. 外部访问容器
 
 :star2:  docker 容器如果在启动的时候，如果不指定端口映射的参数，容器外部不能通过网络来访问容器内部。
 
@@ -62,7 +62,7 @@
 
 ![](../../../../操作/assets/2022-10-25-12-03-30-image.png)
 
-## 3. 挂载外部文件或目录
+#### 3. 挂载外部文件或目录
 
 （1）单目录挂载
 
@@ -76,13 +76,13 @@
 
 需要注意的是： 当宿主机对文件进行修改，那么容器中的文件也会被修改，被称为：**双向数据同步**。
 
-## 4. 从镜像仓库拉取指定镜像
+#### 4. 从镜像仓库拉取指定镜像
 
 > docker pull  [OPTIONS] NAME[:TAG|@DIGEST]
 
 ![](../../../../操作/assets/2022-10-31-09-55-14-image.png)
 
-## 5. docker 免sudo登录
+#### 5. docker 免sudo登录
 
 **文件权限：`drwxrwxrwx`**
 
@@ -112,7 +112,7 @@
 
 系统重启生效。
 
-## 6. dockerfile 执行
+#### 6. dockerfile 执行
 
 > docker build -t <image_name> -f <dockerfile_name> <dockerfile_path>
 
@@ -145,3 +145,35 @@ RUN touch aaa.txt
 ![](../../../../操作/assets/2022-11-14-14-23-17-image.png)
 
 可以看到已经创建了aaa.txt这个文件
+
+#### 7. 实例随宿主机开机启动
+
+> docker run -m 512m --memory-swap 1G-it -p 58080:8080 --restart=always --name bvrfis --volumes -from logdata mytomcat:4.0 /root/run.sh  
+
+`–restart`具体参数值详细信息：
+
+> - no - 容器不自动重启
+> - on-failure - 容器退出状态不为0时自动重启
+> - on-failure:[n] - 容器退出状态不为0时自动重启，最大尝试n次
+> - always - 始终尝试自动重启
+
+
+
+#### 8. docker实例开机自起
+
+（1）首先在dockerfile中新增
+
+```
+ENTRYPOINT ["java","-Dspring.config.location=/home/work/itsm/application-dev.yml", "-jar","/home/work/itsm/horizon-itsm-msgcenter.jar"]
+
+```
+
+（2）然后生成镜像
+
+> docker build -t v1 -f Dockerfile .
+
+（3）最后守护进程启动
+
+> docker run -itd --name test-entrypoint  -p 6669:6669  5f71514c8798 /bin/bash
+
+这样实例就自己启动了~
