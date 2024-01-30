@@ -157,15 +157,12 @@ RUN touch aaa.txt
 > - on-failure:[n] - 容器退出状态不为0时自动重启，最大尝试n次
 > - always - 始终尝试自动重启
 
-
-
 #### 8. docker实例开机自起
 
 （1）首先在dockerfile中新增
 
 ```
 ENTRYPOINT ["java","-Dspring.config.location=/home/work/itsm/application-dev.yml", "-jar","/home/work/itsm/horizon-itsm-msgcenter.jar"]
-
 ```
 
 （2）然后生成镜像
@@ -177,3 +174,90 @@ ENTRYPOINT ["java","-Dspring.config.location=/home/work/itsm/application-dev.yml
 > docker run -itd --name test-entrypoint  -p 6669:6669  5f71514c8798 /bin/bash
 
 这样实例就自己启动了~
+
+#### 9. 查看docker信息
+
+指令：
+
+> docker info
+
+
+
+```shell
+  ~ docker info
+Client: Docker Engine - Community
+ Version:    24.0.7
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.11.2
+    Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+  compose: Docker Compose (Docker Inc.)
+    Version:  v2.21.0
+    Path:     /usr/libexec/docker/cli-plugins/docker-compose
+  scan: Docker Scan (Docker Inc.)
+    Version:  v0.23.0
+    Path:     /usr/libexec/docker/cli-plugins/docker-scan
+
+Server:
+ Containers: 7
+  Running: 0
+  Paused: 0
+  Stopped: 7
+ Images: 9
+ Server Version: 24.0.7
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Using metacopy: false
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: systemd
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 61f9fd88f79f081d64d6fa3bb1a0dc71ec870523
+ runc version: v1.1.9-0-gccaecfc
+ init version: de40ad0
+ Security Options:
+  apparmor
+  seccomp
+   Profile: builtin
+  cgroupns
+ Kernel Version: 6.2.0-39-generic
+ Operating System: Ubuntu 22.04.3 LTS
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 20
+ Total Memory: 31.11GiB
+ Name: home
+ ID: BGDS:P3WW:74SI:VRV7:767E:L6LD:OT4M:U45D:AERG:XSBV:EY67:DXOC
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+
+```
+
+#### 10. docker清理空间
+
+> docker system prune
+
+- 该指令默认会清除所有如下资源：
+  - 已停止的容器（container）
+  - 未被任何容器所使用的卷（volume）
+  - 未被任何容器所关联的网络（network）
+  - 所有悬空镜像（image）。
+
+所以需要注意： 如果有暂时暂停的实例，不要用这个指令
