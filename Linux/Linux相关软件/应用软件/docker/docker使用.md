@@ -181,8 +181,6 @@ ENTRYPOINT ["java","-Dspring.config.location=/home/work/itsm/application-dev.yml
 
 > docker info
 
-
-
 ```shell
   ~ docker info
 Client: Docker Engine - Community
@@ -246,8 +244,6 @@ Server:
  Insecure Registries:
   127.0.0.0/8
  Live Restore Enabled: false
-
-
 ```
 
 #### 10. docker清理空间
@@ -260,4 +256,4 @@ Server:
   - 未被任何容器所关联的网络（network）
   - 所有悬空镜像（image）。
 
-所以需要注意： 如果有暂时暂停的实例，不要用这个指令
+所以需要注意： 如果有暂时暂停的实例，不要用这个指令doc
